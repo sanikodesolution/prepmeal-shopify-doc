@@ -54,13 +54,27 @@
 	padding-left: 20px;
 }
 
-/* Section headings */
+/* Section headings.
+   Note: this stylesheet sets html{font-size:10px}, so 1rem = 10px here, not
+   16px. Keep sizes in px to stay exact -- 30px is also what the base h3 rule
+   in collection.css uses. */
 .main-content .page-header h3 {
 	margin-top: 0;
 	margin-bottom: 0;
+	font-size: 30px;
+	line-height: 1.25;
 	font-weight: 700;
 	letter-spacing: -0.2px;
 	color: #14202c;
+}
+
+/* Page title: h1 (doc title) > h2 (page title) > h3 (sections) */
+.main-content h2 {
+	margin-top: 0;
+	font-size: 36px;
+	line-height: 1.25;
+	color: #14202c;
+	font-weight: 700;
 }
 
 .main-content h4 {
@@ -184,7 +198,7 @@
 	}
 
 	.main-content .page-header h3 {
-		font-size: 22px;
+		font-size: 24px;
 	}
 }
 
