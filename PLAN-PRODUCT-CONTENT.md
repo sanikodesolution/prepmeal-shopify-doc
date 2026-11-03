@@ -61,6 +61,7 @@ level does nothing. The real chains are:
 | Plan headline, price fact, plan badge | `custom.heading`, `custom.fact_*`, `custom.badge_*` | Per product |
 | Stats strip numbers (24oz, 2-3 min, Fresh...) | `stat_item` list → `custom.stats` | Shop shared |
 | Hero tagline ("6 meals. 1 week. Zero stress.") | `custom.ben_line_1/2/3`, `custom.ben_eyebrow` | Per product |
+| How many MEAL 1…N dropdowns (6 / 10 / 15) | `custom.meal_slots` | Per product |
 | The meals, their photos, macros, badges | Product **variants** + variant metafields | Per product |
 | Explore grid filters | Variant `custom.diet_tags` | Per variant |
 | Chef story text | `custom.chef_eyebrow/heading/text` | Shop shared |
@@ -82,7 +83,24 @@ level does nothing. The real chains are:
 
 ## 3. Step 1 — Products and variants
 
-### 3.1 One variant per meal
+### 3.1 Order box — how many MEAL dropdowns (edit on the product)
+
+This is what creates **MEAL 1 … MEAL 6** on the storefront. It is **not** a
+variant. Merchants set it on the plan product so they never need the theme editor.
+
+1. Settings → **Custom data** → **Products** → **Add definition** (once per store):
+
+| Name | Namespace and key | Type | Notes |
+|---|---|---|---|
+| Meal slots | `custom.meal_slots` | Integer | How many dropdowns (e.g. `6`). Pin to product admin. |
+| Meal slot label | `custom.meal_slot_label` | Single line text | Label prefix, default `Meal`. Optional. |
+
+2. Products → **6 Meal Plan** → Product metafields → **Meal slots** = `6` → Save.
+
+Priority if Meal slots is blank: theme “Order dropdowns” → number in the product
+title (`6 Meal Plan` → 6).
+
+### 3.2 One variant per meal (the weekly menu list)
 
 1. Products → **6 Meal Plan** → **Variants**.
 2. The option must be named **Meal**.
@@ -92,7 +110,10 @@ level does nothing. The real chains are:
 Variant order is the order meals appear. Prices and stock always come from the
 variant, so the order box keeps charging what Shopify charges.
 
-### 3.2 Variant metafields
+**Merchant weekly workflow:** edit Meal variants only. Change Meal slots only when
+the plan size itself changes (5 / 6 / 10 / 15).
+
+### 3.3 Variant metafields
 
 Settings → **Custom data** → **Products** → **Variants** → Add definition.
 Create these once, then fill them per variant.
@@ -119,13 +140,15 @@ Meal macros resolve **variant → meal metaobject → product**. So a product-le
 `custom.calories` acts as a single fallback value for every meal that does not
 set its own. Fill the variant, not the product, unless you want one shared value.
 
-### 3.3 Product metafields (per plan)
+### 3.4 Product metafields (per plan)
 
 Settings → **Custom data** → **Products** → Add definition. Fill on each plan
 product.
 
 | Name | Namespace and key | Type |
 |---|---|---|
+| Meal slots | `custom.meal_slots` | Integer — how many order dropdowns |
+| Meal slot label | `custom.meal_slot_label` | Single line text, default `Meal` |
 | Plan label | `custom.plan_label` | Single line text |
 | Heading | `custom.heading` | Multi-line text |
 | Subheading | `custom.subheading` | Multi-line text |
@@ -163,7 +186,7 @@ product.
 Not every plan needs every key. Anything blank falls through to the shop-level
 value, then the theme editor.
 
-### 3.4 Shared overrides on the product
+### 3.5 Shared overrides on the product
 
 To give one plan its own version of shared content, add the same **metaobject
 list** definition to Products and fill it there. Empty means "use the shared one".
@@ -180,7 +203,7 @@ list** definition to Products and fill it there. Empty means "use the shared one
 | GKK panel stats | `stat_item` | `custom.thali_stat_items` | `custom.thali_stat_items` |
 | GKK panel facts | `stat_item` | `custom.thali_fact_items` | `custom.thali_fact_items` |
 
-### 3.5 Legacy plain-text lists (still supported)
+### 3.6 Legacy plain-text lists (still supported)
 
 These predate the metaobject lists and are still read, so a store that already
 filled them keeps working. They sit **after** the metaobject list and **before**
