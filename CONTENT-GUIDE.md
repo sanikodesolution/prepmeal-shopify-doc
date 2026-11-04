@@ -43,6 +43,8 @@
 
 CM meal plan page-এ **Show built-in hero / benefits** বন্ধ রাখুন — না হলে দুইবার Hero দেখাবে।
 
+৬ মিল পেজে **Premium ingredients / This week's menu** ব্যান্ড (বড় প্লেট ছবি + মিল লিস্ট) ডিফল্টে **বন্ধ**। আবার দেখাতে চাইলে: CM meal plan page → **Show Premium ingredients / weekly menu band** চালু করুন। (`show_quality_band`; কনটেন্ট আসে `custom.quality_points` বা Quality ব্লক থেকে।)
+
 ### ২.১ Hero (হোমপেজের ব্যানার)
 
 **মোড:** শুধু Customizer (Metaobject লাগবে না)। প্ল্যান পেজের Hero আলাদা — উপরের **MP Hero** দেখুন।
@@ -277,6 +279,7 @@ CM meal plan page-এ **Show built-in hero / benefits** বন্ধ রাখ�
 | প্ল্যান পেজে সব কনটেন্ট একসাথে হারিয়ে গেছে | Product picker-এ ভুল | **CM meal plan page**-এ প্রোডাক্ট আবার বাছুন (হ্যান্ডেল টাইপ করবেন না) |
 | হিরোতে ক্লিক করলে ডান সাইডবার বদলায় না | পুরনো টেমপ্লেট / ক্যাশ | হার্ড রিফ্রেশ; বামে **MP Hero** ক্লিক করুন; `PLAN-PRODUCT-CONTENT.md` §০ |
 | দুইবার Hero দেখাচ্ছে | Built-in hero চালু + MP Hero আছে | CM meal plan page → Show built-in hero **বন্ধ** |
+| Premium ingredients / This week's menu দেখাচ্ছে না | `show_quality_band` বন্ধ (৬ মিল ডিফল্ট) | CM meal plan page → **Show Premium ingredients / weekly menu band** চালু |
 | টাউন ভুল জায়গায় পিন হচ্ছে | নাম একাধিক জায়গায় আছে | ওই লাইনে রাজ্য যোগ করুন, যেমন `Sussex, WI` |
 | Delivery Areas পেজে নতুন টাউনে পিন বসছে না | পিন আসে `cm-da-map.js`-এর স্থির তালিকা থেকে | ডেভেলপারকে `COORDS` তালিকায় নাম যোগ করতে বলুন |
 | সব মিল একই নিউট্রিশন দেখাচ্ছে | মান Product-এ দেওয়া হয়েছে, Variant-এ নয় | Variant metafield-এ সরান |

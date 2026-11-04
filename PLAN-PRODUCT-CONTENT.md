@@ -31,6 +31,12 @@ Built-in hero/benefits inside **CM meal plan page** stay **off** on the 6-meal
 templates (`show_hero` / `show_benefits_band` = false). Leave them off so you do
 not get a double hero.
 
+The **Premium ingredients / This week's menu** band (large plate image + meal
+list panel, `mealplan-q`) is also **off** on 6-meal
+(`show_quality_band` = false). Turn that checkbox on in CM meal plan page if you
+want the band back; content still comes from `custom.quality_points` or Quality
+blocks.
+
 ### 0.2 How to edit (merchant steps)
 
 1. Online Store → Themes → **Customize**.
@@ -276,6 +282,11 @@ the old text is ignored.
 
 `custom.quality_points` is **product-only** — there is no shop-level or theme
 editor equivalent, so it is the only way to drive the quality cards from Admin.
+
+That list feeds the **Premium ingredients / This week's menu** band only when
+**Show Premium ingredients / weekly menu band** (`show_quality_band`) is on.
+On the 6 Meal Plan templates the band ships **off**; enabling the setting is
+required before metafield or Quality-block rows appear on the page.
 
 ---
 
@@ -561,6 +572,7 @@ On **CM meal plan page**, keep these off when MP Hero / MP Benefits are present:
 |---|---|
 | Show built-in hero (legacy) | Off |
 | Show built-in benefits (legacy) | Off |
+| Show Premium ingredients / weekly menu band (`show_quality_band`) | Off on 6-meal (shipped default) |
 
 ### 7.1 CM meal plan page controls
 
@@ -568,8 +580,9 @@ On **CM meal plan page**, keep these off when MP Hero / MP Benefits are present:
 |---|---|
 | **Plan product** (`content_product`) | Highest-priority source for the plan product. Blank is the shipped default — see 7.3 |
 | **Plan product** / **Meals product** (order box group) | Fallbacks when `content_product` is blank |
+| Show Premium ingredients / weekly menu band (`show_quality_band`) | Toggles the image + meal-list panel (Premium ingredients / This week's menu). Default **off** on 6-meal; needs Quality rows (`custom.quality_points` or Quality blocks) and no `menu_item` blocks |
 | Order dropdowns (`picker_count`) | Fallback slot count when `custom.meal_slots` is blank |
-| Meals in the featured row (`menu_count`) | How many meals "This week's menu" shows, default 5 |
+| Meals in the featured row (`menu_count`) | How many meals the weekly explore row shows, default 5 |
 | Meals per Explore page (`grid_page_size`) | Cards before Load more, default 6 |
 | Meal card link label | Default `View meal` |
 | Filter: all label | Default `All` |

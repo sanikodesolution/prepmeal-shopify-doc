@@ -772,7 +772,7 @@ announcement-bar → delivery message, if one mentions a city
 					<tr><td><code>cm-mp-hero</code></td><td>MP Hero</td><td>Plan hero band — click in Customize preview to edit heading, facts, buttons and images</td><td>—</td></tr>
 					<tr><td><code>cm-mp-benefits</code></td><td>MP Benefits</td><td>Benefits headline band (“6 meals. 1 week…”) plus optional Benefit chip blocks</td><td>benefit</td></tr>
 					<tr><td><code>cm-mp-band</code></td><td>MP Text band</td><td>Optional extra story or final CTA band</td><td>—</td></tr>
-					<tr><td><code>cm-meal-plan-page</code></td><td>CM meal plan page</td><td>Weekly menu, order box, explore grid, chef, steps, quality, gallery, delivery, reviews, FAQ, related, CTA (built-in hero/benefits off when MP Hero / MP Benefits are used)</td><td>area_*, meal, benefit, step, quality, menu_item, review, faq, related</td></tr>
+					<tr><td><code>cm-meal-plan-page</code></td><td>CM meal plan page</td><td>Weekly menu, order box, explore grid, chef, steps, optional Premium ingredients band (<code>show_quality_band</code>, off on 6-meal), gallery, delivery, reviews, FAQ, related, CTA (built-in hero/benefits off when MP Hero / MP Benefits are used)</td><td>area_*, meal, benefit, step, quality, menu_item, review, faq, related</td></tr>
 					<tr><td><code>cm-build-box</code></td><td>CM build your box</td><td>Slot-based box builder that adds the selected plates to the cart</td><td>— (uses plan variants)</td></tr>
 					<tr><td><code>cm-mp7</code></td><td>7 Meal Plan</td><td>Single-section plan page for the 7 plate plan</td><td>meal, way_meal, feature, testimonial, step, popular, faq, favorite</td></tr>
 					<tr><td><code>cm-product-details</code></td><td>Product details</td><td>Meal detail block with dish switcher, nutrition, accordions and plan pricing</td><td>dish, accordion</td></tr>
@@ -966,6 +966,8 @@ linked_product:      5-meal-plan
 				<li><strong>CM meal plan page</strong> — menu, order box, chef, delivery, FAQ, CTA</li>
 			</ol>
 			Leave <em>Show built-in hero</em> and <em>Show built-in benefits</em> off on CM meal plan page so the hero is not duplicated. Full steps: <code>PLAN-PRODUCT-CONTENT.md</code> section 0.
+			<br><br>
+			<strong>Premium ingredients band is off on 6-meal.</strong> The large plate + “This week's menu” list (<code>mealplan-q</code>) is hidden by default via <code>show_quality_band</code>. To bring it back: CM meal plan page → tick <em>Show Premium ingredients / weekly menu band</em> (content from <code>custom.quality_points</code> or Quality blocks).
 		</div>
 
 		<div class="doc-note">
@@ -1022,7 +1024,7 @@ linked_product:      5-meal-plan
 					<tr><td>Weekly menu</td><td><code>menu_eyebrow</code>, <code>menu_heading</code>, <code>menu_text</code>, <code>explore_heading</code>, <code>load_more_label</code>, <code>detail_note</code>, <code>meal_price</code>, <code>total_label</code>, <code>picker_count</code>, <code>content_product</code>, <code>plan_product</code>, <code>meals_product</code></td></tr>
 					<tr><td>Chef</td><td><code>chef_eyebrow</code>, <code>chef_heading</code>, <code>chef_text</code>, <code>chef_image_1</code>, <code>chef_image_2</code></td></tr>
 					<tr><td>Steps</td><td><code>steps_eyebrow</code>, <code>steps_heading</code></td></tr>
-					<tr><td>Quality</td><td><code>quality_eyebrow</code>, <code>quality_heading</code>, <code>quality_text</code>, <code>quality_button</code></td></tr>
+					<tr><td>Quality / Premium ingredients band</td><td><code>show_quality_band</code> (off on 6-meal by default), <code>quality_eyebrow</code>, <code>quality_heading</code>, <code>quality_text</code>, <code>quality_button</code> — list rows from <code>custom.quality_points</code> or Quality blocks</td></tr>
 					<tr><td>Thali plate</td><td><code>thali_show</code>, <code>thali_image</code>, <code>thali_chips</code>, <code>thali_tickets</code>, <code>thali_steps</code>, <code>thali_towns</code>, and the surrounding headings</td></tr>
 					<tr><td>Gallery</td><td><code>show_gallery</code>, <code>gallery_eyebrow</code>, <code>gallery_heading</code></td></tr>
 					<tr><td>Delivery</td><td><code>delivery_style</code>, <code>delivery_checker</code>, eyebrow, heading and text, town lists for both map styles, kitchen coordinates and radius, country hint, all messages and legends</td></tr>
@@ -1836,6 +1838,16 @@ Field block:
 					</tr>
 				</thead>
 				<tbody>
+					<tr>
+						<td><strong>1.3.1</strong></td>
+						<td>November 5, 2026</td>
+						<td>
+							<ul>
+								<li><strong>6 Meal Plan:</strong> Premium ingredients / “This week's menu” band (<code>mealplan-q</code>) ships hidden via <code>show_quality_band</code> (default off). Re-enable in CM meal plan page settings; copy still from <code>custom.quality_points</code> / Quality blocks.</li>
+								<li>Documentation: CONTENT-GUIDE, PLAN-PRODUCT-CONTENT and Meal Plan Pages note the toggle and troubleshooting.</li>
+							</ul>
+						</td>
+					</tr>
 					<tr>
 						<td><strong>1.3.0</strong></td>
 						<td>October 26, 2026</td>
