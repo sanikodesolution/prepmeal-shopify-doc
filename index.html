@@ -702,7 +702,7 @@ announcement-bar → delivery message, if one mentions a city
 					<tr><td><code>index.json</code></td><td>Home page</td><td>Hero banner, 4-step features, image with text, parallax gallery, badge row, flavour wheel, product details, delivery areas</td></tr>
 					<tr><td><code>page.meal-plans.json</code></td><td>Meal plans landing</td><td><code>cm-meal-plan-page</code></td></tr>
 					<tr><td><code>page.5-meal-plan.json</code></td><td>5 plate plan</td><td><code>cm-meal-plan-page</code></td></tr>
-					<tr><td><code>page.6-meal-plan.json</code></td><td>6 plate plan</td><td><code>cm-meal-plan-page</code></td></tr>
+					<tr><td><code>page.6-meal-plan.json</code></td><td>6 plate plan</td><td><code>cm-mp-hero</code>, <code>cm-mp-benefits</code>, <code>cm-meal-plan-page</code></td></tr>
 					<tr><td><code>page.7-meal-plan.json</code></td><td>7 plate plan</td><td><code>cm-meal-plan-page</code></td></tr>
 					<tr><td><code>page.10-meal-plan.json</code></td><td>10 plate plan</td><td><code>cm-build-box</code>, <code>cm-meal-plan-page</code></td></tr>
 					<tr><td><code>page.15-meal-plan.json</code></td><td>15 plate plan</td><td><code>cm-meal-plan-page</code></td></tr>
@@ -732,7 +732,7 @@ announcement-bar → delivery message, if one mentions a city
 				<tbody>
 					<tr><td><code>product.json</code></td><td>Individual meals and general products</td><td>Meal details, main product form, related products, chef story, why-us, steps, delivery map, plans, contact CTA</td></tr>
 					<tr><td><code>product.5-meal-plan.json</code></td><td>5 meal plan</td><td><code>cm-build-box</code> (min plates 5)</td></tr>
-					<tr><td><code>product.6-meal-plan.json</code></td><td>6 meal plan</td><td><code>cm-build-box</code> (min plates 6)</td></tr>
+					<tr><td><code>product.6-meal-plan.json</code></td><td>6 meal plan (same layout as the page)</td><td><code>cm-mp-hero</code>, <code>cm-mp-benefits</code>, <code>cm-meal-plan-page</code></td></tr>
 					<tr><td><code>product.7-meal-plan.json</code></td><td>7 meal plan</td><td><code>cm-build-box</code> (min plates 7)</td></tr>
 					<tr><td><code>product.10-meal-plan.json</code></td><td>10 meal plan</td><td><code>cm-build-box</code> (min plates 10)</td></tr>
 					<tr><td><code>product.15-meal-plan.json</code></td><td>15 meal plan</td><td><code>cm-build-box</code> (min plates 15)</td></tr>
@@ -769,7 +769,10 @@ announcement-bar → delivery message, if one mentions a city
 					</tr>
 				</thead>
 				<tbody>
-					<tr><td><code>cm-meal-plan-page</code></td><td>CM meal plan page</td><td>Complete plan landing: hero, benefits, weekly menu, chef, steps, quality, gallery, delivery checker, reviews, FAQ, related plans, CTA</td><td>meal, benefit, step, quality, menu_item, review, faq, related</td></tr>
+					<tr><td><code>cm-mp-hero</code></td><td>MP Hero</td><td>Plan hero band — click in Customize preview to edit heading, facts, buttons and images</td><td>—</td></tr>
+					<tr><td><code>cm-mp-benefits</code></td><td>MP Benefits</td><td>Benefits headline band (“6 meals. 1 week…”) plus optional Benefit chip blocks</td><td>benefit</td></tr>
+					<tr><td><code>cm-mp-band</code></td><td>MP Text band</td><td>Optional extra story or final CTA band</td><td>—</td></tr>
+					<tr><td><code>cm-meal-plan-page</code></td><td>CM meal plan page</td><td>Weekly menu, order box, explore grid, chef, steps, quality, gallery, delivery, reviews, FAQ, related, CTA (built-in hero/benefits off when MP Hero / MP Benefits are used)</td><td>area_*, meal, benefit, step, quality, menu_item, review, faq, related</td></tr>
 					<tr><td><code>cm-build-box</code></td><td>CM build your box</td><td>Slot-based box builder that adds the selected plates to the cart</td><td>— (uses plan variants)</td></tr>
 					<tr><td><code>cm-mp7</code></td><td>7 Meal Plan</td><td>Single-section plan page for the 7 plate plan</td><td>meal, way_meal, feature, testimonial, step, popular, faq, favorite</td></tr>
 					<tr><td><code>cm-product-details</code></td><td>Product details</td><td>Meal detail block with dish switcher, nutrition, accordions and plan pricing</td><td>dish, accordion</td></tr>
@@ -953,10 +956,20 @@ linked_product:      5-meal-plan
 		<div class="page-header">
 			<h3>Meal Plan Pages</h3>
 		</div>
-		<p>Each plan page is one section, <code>cm-meal-plan-page</code>, with everything editable from the sidebar — or, more powerfully, from the plan product's metafields in Admin. The plan and the meal catalogue are connected by three <strong>product picker</strong> settings.</p>
+		<p>Meals and prices come from the plan product in Admin. Page copy is editable in Customize. On the <strong>6 Meal Plan</strong> templates, Hero and Benefits are separate Template sections so clicking them in the preview opens the right settings.</p>
 
 		<div class="doc-note">
-			<strong>These settings hold product objects, not handles.</strong> All three are declared <code>"type": "product"</code>, so Liquid receives a real product and <code>.metafields</code>, <code>.variants</code> and <code>.price</code> work on them directly. The template JSON shows a handle (<code>"plan_product": "6-meal-plan"</code>) but that is only how it is stored.
+			<strong>6 Meal Plan — click to edit.</strong> Under Template you should see:
+			<ol style="margin:8px 0 0 18px;">
+				<li><strong>MP Hero</strong> — click the hero headline → edit heading, facts, buttons, images</li>
+				<li><strong>MP Benefits</strong> — click “6 meals. 1 week…” → edit the benefits band and chips</li>
+				<li><strong>CM meal plan page</strong> — menu, order box, chef, delivery, FAQ, CTA</li>
+			</ol>
+			Leave <em>Show built-in hero</em> and <em>Show built-in benefits</em> off on CM meal plan page so the hero is not duplicated. Full steps: <code>PLAN-PRODUCT-CONTENT.md</code> section 0.
+		</div>
+
+		<div class="doc-note">
+			<strong>These settings hold product objects, not handles.</strong> The product pickers on CM meal plan page are declared <code>"type": "product"</code>, so Liquid receives a real product and <code>.metafields</code>, <code>.variants</code> and <code>.price</code> work on them directly. The template JSON shows a handle (<code>"plan_product": "6-meal-plan"</code>) but that is only how it is stored.
 			<br><br>
 			<strong>Never wrap one in <code>all_products</code>.</strong> <code>all_products</code> takes a handle <em>string</em>; given a product object it returns <code>nil</code>. That silently kills the meals, the order-box price and every metafield on the page at once. If a plan page ever loses all its Admin content together, check this first.
 		</div>
@@ -991,7 +1004,7 @@ linked_product:      5-meal-plan
 			<li>Add the plan product in Shopify admin.</li>
 		</ol>
 		<div class="doc-note">
-			<strong>Filling plan content from Admin.</strong> The plan pages can take their copy, meals and macros from the plan product's <code>custom.*</code> metafields instead of these section settings, which then act as the fallback. That full schema — every key, its fallback chain and its Admin location — is documented separately in <code>docs/PLAN-PRODUCT-CONTENT.md</code>. Read that file before authoring a new plan; this table only covers the theme-editor layer.
+			<strong>Filling plan content from Admin.</strong> The plan pages can take their copy, meals and macros from the plan product's <code>custom.*</code> metafields; Customize section settings act as the merchant-friendly layer (and as fallbacks). Full schema — every key, fallback chain, Customize click-to-edit, meal slots and order-box behaviour — is in <code>PLAN-PRODUCT-CONTENT.md</code> (this <code>prepmeal-shopify-doc</code> folder).
 		</div>
 
 		<p><strong>Key settings on this section:</strong></p>
@@ -1004,8 +1017,8 @@ linked_product:      5-meal-plan
 					</tr>
 				</thead>
 				<tbody>
-					<tr><td>Hero</td><td><code>plan_label</code>, <code>heading</code>, <code>text</code>, three label/value fact pairs, two buttons, two hero images, badge value and label</td></tr>
-					<tr><td>Benefits</td><td><code>ben_line_1..3</code>, <code>ben_note</code></td></tr>
+					<tr><td>Hero (prefer <strong>MP Hero</strong> section)</td><td>On 6-meal: edit <code>cm-mp-hero</code>. Legacy fallbacks on this section: <code>plan_label</code>, <code>heading</code>, <code>text</code>, facts, buttons, images, badge — keep <code>show_hero</code> off when MP Hero is present</td></tr>
+					<tr><td>Benefits (prefer <strong>MP Benefits</strong>)</td><td>On 6-meal: edit <code>cm-mp-benefits</code>. Legacy: <code>ben_line_1..3</code>, <code>ben_note</code> — keep <code>show_benefits_band</code> off when MP Benefits is present</td></tr>
 					<tr><td>Weekly menu</td><td><code>menu_eyebrow</code>, <code>menu_heading</code>, <code>menu_text</code>, <code>explore_heading</code>, <code>load_more_label</code>, <code>detail_note</code>, <code>meal_price</code>, <code>total_label</code>, <code>picker_count</code>, <code>content_product</code>, <code>plan_product</code>, <code>meals_product</code></td></tr>
 					<tr><td>Chef</td><td><code>chef_eyebrow</code>, <code>chef_heading</code>, <code>chef_text</code>, <code>chef_image_1</code>, <code>chef_image_2</code></td></tr>
 					<tr><td>Steps</td><td><code>steps_eyebrow</code>, <code>steps_heading</code></td></tr>
