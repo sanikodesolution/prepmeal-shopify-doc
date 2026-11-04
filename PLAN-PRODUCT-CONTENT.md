@@ -8,31 +8,41 @@ Five plans use this system: 5, 6, 7, 10 and 15. Templates live at
 `templates/page.N-meal-plan.json` and `templates/product.N-meal-plan.json`
 (the product Preview uses the same layout as the page).
 
-> **Verified against the live theme `#188743614770`.** See section 9 for how to
-> re-verify after a theme change.
+> **Verified against the live theme `#188743614770`** (Hero / Hero button /
+> Benefits blocks under CM meal plan page). See section 9 for how to re-verify
+> after a theme change.
 
 ---
 
-## 0. Customize — click a section to edit it (6 Meal Plan)
+## 0. Customize — click a block to edit it (6 Meal Plan)
 
-On the **6 Meal Plan** page/product templates, Hero and Benefits are **their
-own Template sections**. Shopify selects those when you click them in the
-preview, and the right sidebar shows only that section’s fields.
+The **6 Meal Plan** page/product templates use **one** section —
+**CM meal plan page** (`sections/cm-meal-plan-page.liquid`) — with clickable
+**area folders** and content **blocks** underneath it in the left sidebar.
+Click a band or item in the preview (or its name on the left) to open only that
+block’s fields. Stay on this page; you do not need Admin metafields for day-to-day
+copy edits when Theme Editor blocks are filled.
 
-### 0.1 Left sidebar (Template) order
+### 0.1 Left sidebar under CM meal plan page
 
-| Left sidebar name | Section file | What you edit |
+| Left sidebar name | Block type | What you edit |
 |---|---|---|
-| **MP Hero** | `sections/cm-mp-hero.liquid` | Plan label, heading, text, facts, buttons, hero images, badge |
-| **MP Benefits** | `sections/cm-mp-benefits.liquid` | Eyebrow, “6 meals. / 1 week. / Zero stress.”, note; Benefit chip blocks |
-| **CM meal plan page** | `sections/cm-meal-plan-page.liquid` | Plan product, weekly menu, order box, explore grid, chef, steps, delivery, reviews, FAQ, related, CTA |
+| **Hero** | `area_hero` | Plan label, heading, text, facts, badge (button labels here are fallback only) |
+| **Hero button** (×2) | `hero_button` | Each CTA: **Label**, **Link**, **Style** (white / orange). Click the button in the preview |
+| **Benefits** | `area_benefits` | Eyebrow + “6 meals. / 1 week. / Zero stress.” + note |
+| **Benefit** (chips) | `benefit` | One scrolling chip per block (Title + Text) |
+| **This week's menu** | `area_menu` | Menu / order band headings |
+| **How it works** / **Step** | `area_steps` / `step` | Steps heading + one card per Step block |
+| **Reviews** / **Review** | `area_reviews` / `review` | Reviews heading + one card per Review block |
+| **FAQ** / **FAQ** rows | `area_faq` / `faq` | FAQ heading + one Q&A per FAQ block |
+| Other folders | `area_*` | Chef, delivery, related, CTA, thali, explore, … |
 
-Built-in hero/benefits inside **CM meal plan page** stay **off** on the 6-meal
-templates (`show_hero` / `show_benefits_band` = false). Leave them off so you do
-not get a double hero.
+Optional standalone sections **MP Hero** (`cm-mp-hero`) and **MP Benefits**
+(`cm-mp-benefits`) still exist if you Add section them, but the shipped 6-meal
+templates do **not** use them — everything lives under CM meal plan page.
 
 The **Premium ingredients / This week's menu** band (large plate image + meal
-list panel, `mealplan-q`) is also **off** on 6-meal
+list panel, `mealplan-q`) is **off** on 6-meal
 (`show_quality_band` = false). Turn that checkbox on in CM meal plan page if you
 want the band back; content still comes from `custom.quality_points` or Quality
 blocks.
@@ -42,22 +52,38 @@ blocks.
 1. Online Store → Themes → **Customize**.
 2. Open the **6-meal-plan** page (or the 6 Meal Plan product with that template).
 3. Hard-refresh once after a theme push.
-4. In the preview, **click the hero headline** → left selects **MP Hero** → right
-   shows Heading, Text, Facts, Buttons.
-5. Click **“Hartland’s #1…” / “6 meals. 1 week…”** → left selects **MP Benefits**.
-6. Click the menu / order area → left selects **CM meal plan page**.
+4. Click the **hero headline** → left selects **Hero** → edit heading / facts.
+5. Click **Build my 6 meals** or **View this week's menu** → left selects that
+   **Hero button** → edit Label, Link, Style on this page.
+6. Click a benefit chip / step card / review / FAQ row → edit that block.
+7. Section-level toggles (Plan product, delivery style, `show_quality_band`, …)
+   live on **CM meal plan page** itself (click the section header, not a folder).
 
 If preview click still selects the wrong row, click the matching name on the
-**left** under Template — that always opens the right settings.
+**left** under CM meal plan page — that always opens the right settings.
 
-### 0.3 Other plan sizes (5 / 7 / 10 / 15)
+### 0.3 Theme Editor blocks win over metafields
 
-Those templates may still use a single **CM meal plan page** section (hero and
-benefits inside it). To get the same click-to-edit UX as 6-meal, add **MP Hero**
-and **MP Benefits** above that section in Customize → Add section, then turn off
-**Show built-in hero** and **Show built-in benefits** on CM meal plan page.
+When these blocks exist on the section, they drive the storefront (and Customize
+preview) so merchants are not blocked by filled product metafields:
 
-### 0.4 Order box behaviour (storefront)
+| Block | Wins over |
+|---|---|
+| **Hero button** | `custom.button_label` / `_2` and section button fallbacks |
+| **Benefit** | `custom.stats` / legacy chip metafields |
+| **Step** | `custom.how_it_works` / legacy step lists |
+| **Review** | `custom.testimonials` / legacy review lists |
+| **FAQ** | `custom.faq_items` / legacy FAQ lists |
+
+No blocks → metafields / section settings / defaults still apply.
+
+### 0.4 Other plan sizes (5 / 7 / 10 / 15)
+
+Those templates also use **CM meal plan page**. Add the same area folders and
+content blocks (including two **Hero button** blocks) in Customize → Add block
+for the same click-to-edit UX as 6-meal.
+
+### 0.5 Order box behaviour (storefront)
 
 | Behaviour | Detail |
 |---|---|
@@ -75,19 +101,25 @@ Each piece of content is looked up in this order, and the first non-empty value
 wins:
 
 ```
-1. Plan product metafield      Products → <plan product> → Metafields
-2. Shop-level shared metafield Settings → Custom data → Shop → Metafields
-3. Theme editor setting        Customize → MP Hero / MP Benefits / CM meal plan page
-4. Hardcoded default           Built into the theme
+1. Theme Editor content blocks  Customize → Hero button / Benefit / Step / Review / FAQ (when present)
+2. Plan product metafield       Products → <plan product> → Metafields
+3. Shop-level shared metafield  Settings → Custom data → Shop → Metafields
+4. Area folder / section setting Customize → Hero / Benefits / … / CM meal plan page
+5. Hardcoded default            Built into the theme
 ```
 
-On **MP Hero** and **MP Benefits**, Customize fields are the primary edit path
-for merchants; product metafields still win on the live storefront when filled.
+**Prefer Theme Editor blocks** for merchant day-to-day edits on this page.
+Product metafields remain useful for shared Admin content and as fallbacks when
+no matching blocks exist. Area folders (`area_hero`, `area_benefits`, …) win in
+the Theme Editor preview when selected; on the live storefront, filled product
+metafields still override those folder text fields unless a winning content
+block covers that piece (see §0.3).
 
-Because of step 2, content that is identical on all five plans (FAQ,
-testimonials, how-it-works steps, delivery towns, chef story) is entered **once**
-and every plan page picks it up. A plan that needs its own version fills the
-matching product metafield and that wins instead.
+Because of shop-level metafields, content that is identical on all five plans
+(FAQ, testimonials, how-it-works steps, delivery towns, chef story) can still be
+entered **once** in Admin when you are not using per-page blocks. A plan that
+needs its own version fills the matching product metafield or adds Theme Editor
+blocks on that template.
 
 A blank value never renders an empty heading or a broken image: it falls through
 to the next source, and the section hides the wrapper when the final value is
@@ -117,9 +149,10 @@ level does nothing. The real chains are:
 
 | I want to change... | Edit this | Level |
 |---|---|---|
-| Plan headline, price fact, plan badge | Customize → **MP Hero**, or `custom.heading` / `custom.fact_*` / `custom.badge_*` | Customize or per product |
-| Stats strip numbers (24oz, 2-3 min, Fresh...) | Customize → **MP Benefits** → Benefit chips, or `stat_item` list → `custom.stats` | Customize or shop shared |
-| Hero tagline ("6 meals. 1 week. Zero stress.") | Customize → **MP Benefits**, or `custom.ben_line_1/2/3`, `custom.ben_eyebrow` | Customize or per product |
+| Plan headline, price fact, plan badge | Customize → **Hero** (`area_hero`), or `custom.heading` / `custom.fact_*` / `custom.badge_*` | Customize or per product |
+| Hero CTAs (label + link) | Customize → **Hero button** blocks | Customize (this page) |
+| Stats strip numbers (24oz, 2-3 min, Fresh...) | Customize → **Benefit** chip blocks, or `stat_item` list → `custom.stats` | Customize or shop shared |
+| Hero tagline ("6 meals. 1 week. Zero stress.") | Customize → **Benefits** (`area_benefits`), or `custom.ben_line_1/2/3`, `custom.ben_eyebrow` | Customize or per product |
 | How many MEAL 1…N dropdowns (6 / 10 / 15) | `custom.meal_slots` | Per product |
 | The meals, their photos, macros, badges | Product **variants** + variant metafields | Per product |
 | Explore grid filters | Variant `custom.diet_tags` | Per variant |
@@ -219,7 +252,7 @@ in Admin.
 | Fact 1 label / value | `custom.fact_1_label`, `custom.fact_1_value` | Single line text |
 | Fact 2 label / value | `custom.fact_2_label`, `custom.fact_2_value` | Single line text |
 | Fact 3 label / value | `custom.fact_3_label`, `custom.fact_3_value` | Single line text |
-| Hero buttons | `custom.button_label`, `custom.button_label_2` | Single line text |
+| Hero · Button / Button 2 (fallback labels) | `custom.button_label`, `custom.button_label_2` | Single line text — prefer Customize **Hero button** blocks for label + link |
 | Plan badge | `custom.badge_value`, `custom.badge_label` | Single line text |
 | Stats strip headline | `custom.ben_eyebrow`, `custom.ben_line_1`, `_2`, `_3`, `custom.ben_note` | Single line / multi-line text |
 | Menu block copy | `custom.menu_eyebrow`, `custom.menu_heading`, `custom.menu_text`, `custom.menu_button` | Text |
@@ -551,9 +584,9 @@ exposed to the Storefront API.
 3. **Products → 6 Meal Plan → Metafields** — the per-plan copy.
 4. **Products → 6 Meal Plan → Variants** — one variant per meal, with variant
    metafields.
-5. **Online Store → Customize → the plan page** — click **MP Hero** / **MP
-   Benefits** / **CM meal plan page** (see section 0) and confirm **Plan
-   product** on CM meal plan page points at the right product.
+5. **Online Store → Customize → the plan page** — under **CM meal plan page**,
+   use **Hero**, **Hero button**, **Benefits**, chips/steps/reviews/FAQ blocks
+   (see section 0) and confirm **Plan product** points at the right product.
 
 Repeat step 3 for 5, 7, 10 and 15 Meal Plans. Steps 1, 2 and 4's definitions are
 created once and shared.
@@ -566,17 +599,16 @@ created once and shared.
 
 | Section | Editor name | Primary settings |
 |---|---|---|
-| `cm-mp-hero` | **MP Hero** | Plan label, heading, text, facts, buttons, images, badge; optional Plan product for metafields |
-| `cm-mp-benefits` | **MP Benefits** | Eyebrow, three headline lines, note; **Benefit chip** blocks |
-| `cm-meal-plan-page` | **CM meal plan page** | Plan product, menu/order, explore, chef, steps, delivery, reviews, FAQ, related, CTA |
+| `cm-meal-plan-page` | **CM meal plan page** | Plan product + all bands via `area_*` folders and content blocks (`hero_button`, `benefit`, `step`, `review`, `faq`, …) |
+| `cm-mp-hero` | **MP Hero** | Optional Add section alternative — not used on shipped 6-meal templates |
+| `cm-mp-benefits` | **MP Benefits** | Optional Add section alternative — not used on shipped 6-meal templates |
 | `cm-mp-band` | **MP Text band** | Optional extra story/CTA bands (Add section) |
 
-On **CM meal plan page**, keep these off when MP Hero / MP Benefits are present:
+On **CM meal plan page** (shipped 6-meal):
 
 | Setting | Recommended |
 |---|---|
-| Show built-in hero (legacy) | Off |
-| Show built-in benefits (legacy) | Off |
+| Show hero / benefits bands | On (driven by **Hero** / **Benefits** area blocks) |
 | Show Premium ingredients / weekly menu band (`show_quality_band`) | Off on 6-meal (shipped default) |
 
 ### 7.1 CM meal plan page controls
@@ -595,8 +627,13 @@ On **CM meal plan page**, keep these off when MP Hero / MP Benefits are present:
 | Delivery style (`delivery_style`) | `plate`, `leaflet` or `embed` — see 7.2 |
 | Padding, colours | Layout only |
 
-Area folders still available under CM meal plan page (Menu, Chef, Delivery, …)
-edit headings for bands that remain inside that section.
+**Hero CTAs:** use **Hero button** blocks (label + link + style). Section
+`button_link` / `button_link_2` and Hero folder label fields are fallbacks only
+when no Hero button blocks exist.
+
+Area folders under CM meal plan page (Hero, Benefits, Menu, Chef, Delivery, …)
+edit band headings; content rows use Benefit / Step / Review / FAQ / Hero button
+blocks.
 
 ### 7.2 Which delivery snippet renders
 
@@ -642,9 +679,10 @@ than the one the order box charges.
 
 - [ ] **Plan product** is set on CM meal plan page — either `content_product` or
       the order-box **Plan product** — and points at that page's plan product
-- [ ] On 6-meal templates: **MP Hero** and **MP Benefits** appear in Template;
-      built-in hero/benefits on CM meal plan page are off
-- [ ] Customize: clicking the hero opens **MP Hero** settings (section 0)
+- [ ] On 6-meal templates: **CM meal plan page** has **Hero**, two **Hero button**
+      blocks, **Benefits**, and Benefit / Step / Review / FAQ blocks as needed
+- [ ] Customize: clicking a hero CTA opens that **Hero button** (label + link)
+- [ ] `show_quality_band` is off unless the Premium ingredients band is wanted
 - [ ] Every plan product has one variant per meal, each with price and photo
 - [ ] `custom.meal_slots` matches the plan size (6 on 6 Meal Plan, etc.)
 - [ ] Every meal variant has calories, protein, carbs, fat

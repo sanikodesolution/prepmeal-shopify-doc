@@ -769,10 +769,10 @@ announcement-bar → delivery message, if one mentions a city
 					</tr>
 				</thead>
 				<tbody>
-					<tr><td><code>cm-mp-hero</code></td><td>MP Hero</td><td>Plan hero band — click in Customize preview to edit heading, facts, buttons and images</td><td>—</td></tr>
-					<tr><td><code>cm-mp-benefits</code></td><td>MP Benefits</td><td>Benefits headline band (“6 meals. 1 week…”) plus optional Benefit chip blocks</td><td>benefit</td></tr>
+					<tr><td><code>cm-meal-plan-page</code></td><td>CM meal plan page</td><td>Full plan landing: Hero + Hero button blocks, benefits chips, weekly menu, order box, explore, chef, steps, optional Premium ingredients band (<code>show_quality_band</code>, off on 6-meal), gallery, delivery, reviews, FAQ, related, CTA</td><td>area_*, hero_button, meal, benefit, step, quality, menu_item, review, faq, related</td></tr>
+					<tr><td><code>cm-mp-hero</code></td><td>MP Hero</td><td>Optional standalone hero (Add section) — shipped 6-meal uses <code>area_hero</code> + <code>hero_button</code> inside CM meal plan page</td><td>—</td></tr>
+					<tr><td><code>cm-mp-benefits</code></td><td>MP Benefits</td><td>Optional standalone benefits — shipped 6-meal uses <code>area_benefits</code> + Benefit blocks inside CM meal plan page</td><td>benefit</td></tr>
 					<tr><td><code>cm-mp-band</code></td><td>MP Text band</td><td>Optional extra story or final CTA band</td><td>—</td></tr>
-					<tr><td><code>cm-meal-plan-page</code></td><td>CM meal plan page</td><td>Weekly menu, order box, explore grid, chef, steps, optional Premium ingredients band (<code>show_quality_band</code>, off on 6-meal), gallery, delivery, reviews, FAQ, related, CTA (built-in hero/benefits off when MP Hero / MP Benefits are used)</td><td>area_*, meal, benefit, step, quality, menu_item, review, faq, related</td></tr>
 					<tr><td><code>cm-build-box</code></td><td>CM build your box</td><td>Slot-based box builder that adds the selected plates to the cart</td><td>— (uses plan variants)</td></tr>
 					<tr><td><code>cm-mp7</code></td><td>7 Meal Plan</td><td>Single-section plan page for the 7 plate plan</td><td>meal, way_meal, feature, testimonial, step, popular, faq, favorite</td></tr>
 					<tr><td><code>cm-product-details</code></td><td>Product details</td><td>Meal detail block with dish switcher, nutrition, accordions and plan pricing</td><td>dish, accordion</td></tr>
@@ -956,16 +956,17 @@ linked_product:      5-meal-plan
 		<div class="page-header">
 			<h3>Meal Plan Pages</h3>
 		</div>
-		<p>Meals and prices come from the plan product in Admin. Page copy is editable in Customize. On the <strong>6 Meal Plan</strong> templates, Hero and Benefits are separate Template sections so clicking them in the preview opens the right settings.</p>
+		<p>Meals and prices come from the plan product in Admin. Page copy is editable in Customize on this page. The <strong>6 Meal Plan</strong> templates use one <strong>CM meal plan page</strong> section with clickable area folders and content blocks (Hero, Hero button, Benefits, chips, steps, reviews, FAQ).</p>
 
 		<div class="doc-note">
-			<strong>6 Meal Plan — click to edit.</strong> Under Template you should see:
+			<strong>6 Meal Plan — click to edit on this page.</strong> Under <strong>CM meal plan page</strong> you should see:
 			<ol style="margin:8px 0 0 18px;">
-				<li><strong>MP Hero</strong> — click the hero headline → edit heading, facts, buttons, images</li>
-				<li><strong>MP Benefits</strong> — click “6 meals. 1 week…” → edit the benefits band and chips</li>
-				<li><strong>CM meal plan page</strong> — menu, order box, chef, delivery, FAQ, CTA</li>
+				<li><strong>Hero</strong> — click the headline → plan label, heading, text, facts, badge</li>
+				<li><strong>Hero button</strong> (×2) — click each CTA → <em>Label</em>, <em>Link</em>, <em>Style</em> (no other page needed)</li>
+				<li><strong>Benefits</strong> + <strong>Benefit</strong> chips — headline band and scrolling chips</li>
+				<li><strong>Step</strong> / <strong>Review</strong> / <strong>FAQ</strong> blocks — win over metafields when present</li>
 			</ol>
-			Leave <em>Show built-in hero</em> and <em>Show built-in benefits</em> off on CM meal plan page so the hero is not duplicated. Full steps: <code>PLAN-PRODUCT-CONTENT.md</code> section 0.
+			Full steps: <code>PLAN-PRODUCT-CONTENT.md</code> section 0.
 			<br><br>
 			<strong>Premium ingredients band is off on 6-meal.</strong> The large plate + “This week's menu” list (<code>mealplan-q</code>) is hidden by default via <code>show_quality_band</code>. To bring it back: CM meal plan page → tick <em>Show Premium ingredients / weekly menu band</em> (content from <code>custom.quality_points</code> or Quality blocks).
 		</div>
@@ -1019,8 +1020,8 @@ linked_product:      5-meal-plan
 					</tr>
 				</thead>
 				<tbody>
-					<tr><td>Hero (prefer <strong>MP Hero</strong> section)</td><td>On 6-meal: edit <code>cm-mp-hero</code>. Legacy fallbacks on this section: <code>plan_label</code>, <code>heading</code>, <code>text</code>, facts, buttons, images, badge — keep <code>show_hero</code> off when MP Hero is present</td></tr>
-					<tr><td>Benefits (prefer <strong>MP Benefits</strong>)</td><td>On 6-meal: edit <code>cm-mp-benefits</code>. Legacy: <code>ben_line_1..3</code>, <code>ben_note</code> — keep <code>show_benefits_band</code> off when MP Benefits is present</td></tr>
+					<tr><td>Hero</td><td><code>area_hero</code> folder: plan label, heading, text, facts, badge. CTAs: separate <code>hero_button</code> blocks (label + link + style). Section <code>button_label</code> / <code>button_link</code> are fallbacks only</td></tr>
+					<tr><td>Benefits</td><td><code>area_benefits</code> folder: eyebrow + three lines + note. Chips: <code>benefit</code> blocks (win over metafields when present)</td></tr>
 					<tr><td>Weekly menu</td><td><code>menu_eyebrow</code>, <code>menu_heading</code>, <code>menu_text</code>, <code>explore_heading</code>, <code>load_more_label</code>, <code>detail_note</code>, <code>meal_price</code>, <code>total_label</code>, <code>picker_count</code>, <code>content_product</code>, <code>plan_product</code>, <code>meals_product</code></td></tr>
 					<tr><td>Chef</td><td><code>chef_eyebrow</code>, <code>chef_heading</code>, <code>chef_text</code>, <code>chef_image_1</code>, <code>chef_image_2</code></td></tr>
 					<tr><td>Steps</td><td><code>steps_eyebrow</code>, <code>steps_heading</code></td></tr>

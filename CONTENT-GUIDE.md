@@ -31,23 +31,24 @@
 
 ### ২.০ প্ল্যান পেজ Customize (৬ মিল) — ক্লিক করে এডিট
 
-৬ মিল প্ল্যান টেমপ্লেটে Hero আর Benefits **আলাদা সেকশন**. প্রিভিউতে ক্লিক করলে বাম পাশে সেই সেকশন সিলেক্ট হয়, ডান পাশে শুধু সেই ফিল্ডগুলো দেখায়।
+৬ মিল প্ল্যান টেমপ্লেটে **একটাই** সেকশন: **CM meal plan page**। এর নিচে **Hero**, **Hero button**, **Benefits**, chip/step/review/FAQ ব্লক থাকে। প্রিভিউতে ক্লিক করলে বামে সেই ব্লক সিলেক্ট হয় — অন্য পেজে যাওয়ার দরকার নেই।
 
-| বাম সাইডবার | সেকশন ফাইল | কী এডিট করবেন |
+| বাম সাইডবার | ব্লক টাইপ | কী এডিট করবেন |
 |---|---|---|
-| **MP Hero** | `cm-mp-hero` | হেডিং, টেক্সট, ফ্যাক্ট, বাটন, হিরো ছবি |
-| **MP Benefits** | `cm-mp-benefits` | “6 meals. 1 week. Zero stress.”, নোট, Benefit chip ব্লক |
-| **CM meal plan page** | `cm-meal-plan-page` | প্ল্যান প্রোডাক্ট, মেনু, অর্ডার বক্স, শেফ, ডেলিভারি, FAQ… |
+| **Hero** | `area_hero` | হেডিং, টেক্সট, ফ্যাক্ট, ব্যাজ |
+| **Hero button** (২টা) | `hero_button` | প্রতিটি বাটন: Label + Link + Style (এই পেজেই) |
+| **Benefits** | `area_benefits` | “6 meals. 1 week. Zero stress.”, নোট |
+| **Benefit** | `benefit` | স্ক্রলিং chip (Title + Text) |
+| **Step / Review / FAQ** | `step` / `review` / `faq` | কার্ড বা Q&A — ব্লক থাকলে metafield এর উপরে জিতে |
+| **CM meal plan page** | সেকশন | প্ল্যান প্রোডাক্ট, ডেলিভারি স্টাইল, `show_quality_band`… |
 
-**ধাপ:** Customize → ৬-মিল পেজ → প্রিভিউতে হিরো টেক্সটে ক্লিক → বামে **MP Hero** → ডানে Heading এডিট। বিস্তারিত: `PLAN-PRODUCT-CONTENT.md` সেকশন ০।
-
-CM meal plan page-এ **Show built-in hero / benefits** বন্ধ রাখুন — না হলে দুইবার Hero দেখাবে।
+**ধাপ:** Customize → ৬-মিল পেজ → হিরো বাটনে ক্লিক → বামে **Hero button** → Label/Link এডিট। বিস্তারিত: `PLAN-PRODUCT-CONTENT.md` সেকশন ০।
 
 ৬ মিল পেজে **Premium ingredients / This week's menu** ব্যান্ড (বড় প্লেট ছবি + মিল লিস্ট) ডিফল্টে **বন্ধ**। আবার দেখাতে চাইলে: CM meal plan page → **Show Premium ingredients / weekly menu band** চালু করুন। (`show_quality_band`; কনটেন্ট আসে `custom.quality_points` বা Quality ব্লক থেকে।)
 
 ### ২.১ Hero (হোমপেজের ব্যানার)
 
-**মোড:** শুধু Customizer (Metaobject লাগবে না)। প্ল্যান পেজের Hero আলাদা — উপরের **MP Hero** দেখুন।
+**মোড:** শুধু Customizer (Metaobject লাগবে না)। প্ল্যান পেজের Hero আলাদা — উপরের **Hero** / **Hero button** ব্লক দেখুন।
 
 | ফিল্ড | ধরন | নির্দেশনা |
 |---|---|---|
@@ -99,7 +100,7 @@ CM meal plan page-এ **Show built-in hero / benefits** বন্ধ রাখ�
 
 | ছবি | ১ম — Product metafield | ২য় — Customizer | ৩য় — বান্ডল করা |
 |---|---|---|---|
-| Hero (২টি) | `custom.hero_image_1`, `custom.hero_image_2` (+ shop-level) | **MP Hero** → `hero_image_1`, `hero_image_2` | বান্ডল করা ছবি |
+| Hero (২টি) | `custom.hero_image_1`, `custom.hero_image_2` (+ shop-level) | **Hero** area / section `hero_image_1`, `hero_image_2` | বান্ডল করা ছবি |
 | Chef story (২টি) | `custom.chef_image_1`, `custom.chef_image_2` (+ shop-level) | `chef_image_1`, `chef_image_2` | বান্ডল করা ছবি |
 | Thali প্লেট | `custom.thali_image` | `thali_image` | `four-items-plate.webp` |
 | Meal কার্ড | `meal` metaobject → `image` | — | Variant-এর ছবি → প্ল্যানের featured image → `mp-food-N.jpg` |
@@ -277,8 +278,8 @@ CM meal plan page-এ **Show built-in hero / benefits** বন্ধ রাখ�
 | পুরোনো কনটেন্ট দেখাচ্ছে | ব্রাউজার ক্যাশ | হার্ড রিফ্রেশ করুন |
 | Thali প্লেটে ৩টি ট্যাগ | লেখা মাত্র ৩ লাইন | ৪র্থ লাইন যোগ করুন |
 | প্ল্যান পেজে সব কনটেন্ট একসাথে হারিয়ে গেছে | Product picker-এ ভুল | **CM meal plan page**-এ প্রোডাক্ট আবার বাছুন (হ্যান্ডেল টাইপ করবেন না) |
-| হিরোতে ক্লিক করলে ডান সাইডবার বদলায় না | পুরনো টেমপ্লেট / ক্যাশ | হার্ড রিফ্রেশ; বামে **MP Hero** ক্লিক করুন; `PLAN-PRODUCT-CONTENT.md` §০ |
-| দুইবার Hero দেখাচ্ছে | Built-in hero চালু + MP Hero আছে | CM meal plan page → Show built-in hero **বন্ধ** |
+| হিরোতে ক্লিক করলে ডান সাইডবার বদলায় না | পুরনো টেমপ্লেট / ক্যাশ | হার্ড রিফ্রেশ; বামে **Hero** বা **Hero button** ক্লিক; `PLAN-PRODUCT-CONTENT.md` §০ |
+| হিরো বাটনের লিংক খুঁজে পাচ্ছি না | পুরনো fallback ফিল্ড | বাটনে ক্লিক → **Hero button** → Link (এই পেজেই) |
 | Premium ingredients / This week's menu দেখাচ্ছে না | `show_quality_band` বন্ধ (৬ মিল ডিফল্ট) | CM meal plan page → **Show Premium ingredients / weekly menu band** চালু |
 | টাউন ভুল জায়গায় পিন হচ্ছে | নাম একাধিক জায়গায় আছে | ওই লাইনে রাজ্য যোগ করুন, যেমন `Sussex, WI` |
 | Delivery Areas পেজে নতুন টাউনে পিন বসছে না | পিন আসে `cm-da-map.js`-এর স্থির তালিকা থেকে | ডেভেলপারকে `COORDS` তালিকায় নাম যোগ করতে বলুন |
