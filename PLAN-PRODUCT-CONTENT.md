@@ -204,9 +204,14 @@ set its own. Fill the variant, not the product, unless you want one shared value
 Settings → **Custom data** → **Products** → Add definition. Fill on each plan
 product.
 
-| Name | Namespace and key | Type |
+Admin labels use **Section · Field** so merchants can scan the product metafields
+panel quickly (e.g. `Hero · Section title`, `Chef story CTA · Text`,
+`Delivery map · Location`). The namespace/key never changes — only the Name shown
+in Admin.
+
+| Name (Admin label) | Namespace and key | Type |
 |---|---|---|
-| Meal slots | `custom.meal_slots` | Integer — how many order dropdowns |
+| Order box · Meal slots | `custom.meal_slots` | Integer — how many order dropdowns |
 | Meal slot label | `custom.meal_slot_label` | Single line text, default `Meal` |
 | Plan label | `custom.plan_label` | Single line text |
 | Heading | `custom.heading` | Multi-line text |
