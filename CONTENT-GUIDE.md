@@ -195,11 +195,11 @@
 
 লিস্ট খালি থাকলে থিম ক্রমান্বয়ে খোঁজে: `delivery_area_list` → `delivery_towns` → `plate_towns` → বান্ডল করা Hartland লিস্ট। কোনো ধাপেই কিছু না পেলে আগের ধাপে ফিরে যায়।
 
-#### Delivery Areas পেজের ম্যাপ (আলাদা নিয়ম)
+#### Delivery Areas ম্যাপ (হোমপেজ সেকশন)
 
-`/pages/delivery-areas` পেজে সেকশনটি `cm-delivery-areas`। এখানে টাউন যোগ করবেন এভাবে:
+Dedicated `/pages/delivery` পেজ সরানো হয়েছে। একই `cm-delivery-areas` সেকশন হোমপেজে আছে। টাউন যোগ করবেন এভাবে:
 
-**Customizer → Delivery Areas পেজ → CM delivery areas → Delivery area ব্লক → Area name** (শুধু নাম, আর কিছু না)
+**Customizer → Home → CM delivery areas → Delivery area ব্লক → Area name** (শুধু নাম, আর কিছু না)
 
 ⚠️ **এখানে একটি সীমাবদ্ধতা আছে:** এই পেজের ম্যাপে পিন বসে থিমের ভেতরে বান্ডল করা একটি **স্থির কোঅর্ডিনেট তালিকা** থেকে (২৬টি Wisconsin টাউন)। ওই তালিকায় নেই এমন নতুন নাম দিলে —
 
