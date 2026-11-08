@@ -29,22 +29,21 @@
 
 ## ২. কনটেন্ট এরিয়া অনুযায়ী ইনপুট গাইড
 
-### ২.০ প্ল্যান পেজ Customize (৬ মিল) — ক্লিক করে এডিট
+### ২.০ প্ল্যান পেজ Customize — আলাদা সেকশন
 
-৬ মিল প্ল্যান টেমপ্লেটে **একটাই** সেকশন: **CM meal plan page**। এর নিচে **Hero**, **Hero button**, **Benefits**, chip/step/review/FAQ ব্লক থাকে। প্রিভিউতে ক্লিক করলে বামে সেই ব্লক সিলেক্ট হয় — অন্য পেজে যাওয়ার দরকার নেই।
+বর্তমান টেমপ্লেটে প্ল্যান পেজের কনটেন্ট **আলাদা সেকশনে** ভাগ করা: `cm-mp-order` → `cm-mp-hero` → `cm-mp-benefits` → menu / thali / explore / chef → `cm-mp-steps` → delivery → reviews → FAQ → related → CTA। পুরো পেজ একটা mega-section-এ নেই।
 
-| বাম সাইডবার | ব্লক টাইপ | কী এডিট করবেন |
-|---|---|---|
-| **Hero** | `area_hero` | হেডিং, টেক্সট, ফ্যাক্ট, ব্যাজ |
-| **Hero button** (২টা) | `hero_button` | প্রতিটি বাটন: Label + Link + Style (এই পেজেই) |
-| **Benefits** | `area_benefits` | “6 meals. 1 week. Zero stress.”, নোট |
-| **Benefit** | `benefit` | স্ক্রলিং chip (Title + Text) |
-| **Step / Review / FAQ** | `step` / `review` / `faq` | কার্ড বা Q&A — ব্লক থাকলে metafield এর উপরে জিতে |
-| **CM meal plan page** | সেকশন | প্ল্যান প্রোডাক্ট, ডেলিভারি স্টাইল, `show_quality_band`… |
+| বাম সাইডবার (সেকশন) | কী এডিট করবেন |
+|---|---|
+| **MP order** | এই সপ্তাহের মেনু / অর্ডার বক্স, প্ল্যান প্রোডাক্ট |
+| **MP Hero** | হেডিং, টেক্সট, **Hero button** ব্লক |
+| **MP Benefits** | বেনিফিট কপি + Benefit chips |
+| **MP steps / reviews / FAQ** | ধাপ, রিভিউ, প্রশ্নোত্তর — নিজ নিজ সেকশনে |
+| **MP delivery / CTA** | ডেলিভারি চেকার ও ক্লোজিং CTA |
 
-**ধাপ:** Customize → ৬-মিল পেজ → হিরো বাটনে ক্লিক → বামে **Hero button** → Label/Link এডিট। বিস্তারিত: `PLAN-PRODUCT-CONTENT.md` সেকশন ০।
+**ধাপ:** Customize → প্ল্যান পেজ → বামে যে সেকশন চাই সেটা সিলেক্ট → এডিট। পুরো ম্যাপ: `PAGE-SECTIONS.md`। বিস্তারিত প্ল্যান কনটেন্ট: `PLAN-PRODUCT-CONTENT.md`।
 
-৬ মিল পেজে **Premium ingredients / This week's menu** ব্যান্ড (বড় প্লেট ছবি + মিল লিস্ট) ডিফল্টে **বন্ধ**। আবার দেখাতে চাইলে: CM meal plan page → **Show Premium ingredients / weekly menu band** চালু করুন। (`show_quality_band`; কনটেন্ট আসে `custom.quality_points` বা Quality ব্লক থেকে।)
+**Gift cards** ও **Private chef** পেজও একই নিয়মে split — বিস্তারিত `PAGE-SECTIONS.md`।
 
 ### ২.১ Hero (হোমপেজের ব্যানার)
 
@@ -277,10 +276,10 @@ Dedicated `/pages/delivery` পেজ সরানো হয়েছে। এ�
 | Metaobject লিস্ট সিলেক্ট করা যাচ্ছে না | Definition-এর type নাম মেলেনি | উপরের type নাম হুবহু ব্যবহার করুন |
 | পুরোনো কনটেন্ট দেখাচ্ছে | ব্রাউজার ক্যাশ | হার্ড রিফ্রেশ করুন |
 | Thali প্লেটে ৩টি ট্যাগ | লেখা মাত্র ৩ লাইন | ৪র্থ লাইন যোগ করুন |
-| প্ল্যান পেজে সব কনটেন্ট একসাথে হারিয়ে গেছে | Product picker-এ ভুল | **CM meal plan page**-এ প্রোডাক্ট আবার বাছুন (হ্যান্ডেল টাইপ করবেন না) |
+| প্ল্যান পেজে সব কনটেন্ট একসাথে হারিয়ে গেছে | Product picker-এ ভুল | **MP order** (বা যে সেকশনে প্রোডাক্ট পিকার আছে) এ প্রোডাক্ট আবার বাছুন |
 | হিরোতে ক্লিক করলে ডান সাইডবার বদলায় না | পুরনো টেমপ্লেট / ক্যাশ | হার্ড রিফ্রেশ; বামে **Hero** বা **Hero button** ক্লিক; `PLAN-PRODUCT-CONTENT.md` §০ |
 | হিরো বাটনের লিংক খুঁজে পাচ্ছি না | পুরনো fallback ফিল্ড | বাটনে ক্লিক → **Hero button** → Link (এই পেজেই) |
-| Premium ingredients / This week's menu দেখাচ্ছে না | `show_quality_band` বন্ধ (৬ মিল ডিফল্ট) | CM meal plan page → **Show Premium ingredients / weekly menu band** চালু |
+| Premium ingredients / This week's menu দেখাচ্ছে না | সংশ্লিষ্ট MP সেকশন বন্ধ বা খালি | Customize → থাম্বনেইল/মেনু সেকশন চেক করুন; লেগাসি টগল থাকলে `show_quality_band` চালু |
 | টাউন ভুল জায়গায় পিন হচ্ছে | নাম একাধিক জায়গায় আছে | ওই লাইনে রাজ্য যোগ করুন, যেমন `Sussex, WI` |
 | Delivery Areas পেজে নতুন টাউনে পিন বসছে না | পিন আসে `cm-da-map.js`-এর স্থির তালিকা থেকে | ডেভেলপারকে `COORDS` তালিকায় নাম যোগ করতে বলুন |
 | সব মিল একই নিউট্রিশন দেখাচ্ছে | মান Product-এ দেওয়া হয়েছে, Variant-এ নয় | Variant metafield-এ সরান |

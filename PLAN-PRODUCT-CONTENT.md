@@ -8,64 +8,51 @@ Five plans use this system: 5, 6, 7, 10 and 15. Templates live at
 `templates/page.N-meal-plan.json` and `templates/product.N-meal-plan.json`
 (the product Preview uses the same layout as the page).
 
-> **Verified against the live theme `#188743614770`** (Hero / Hero button /
-> Benefits blocks under CM meal plan page). See section 9 for how to re-verify
-> after a theme change.
+> **Verified against the live theme `#188743614770`** (split `cm-mp-*` sections).
+> Full page map: `PAGE-SECTIONS.md`. See section 9 for how to re-verify after a
+> theme change.
 
 ---
 
-## 0. Customize — click a block to edit it (6 Meal Plan)
+## 0. Customize — one section per content band
 
-The **6 Meal Plan** page/product templates use **one** section —
-**CM meal plan page** (`sections/cm-meal-plan-page.liquid`) — with clickable
-**area folders** and content **blocks** underneath it in the left sidebar.
-Click a band or item in the preview (or its name on the left) to open only that
-block’s fields. Stay on this page; you do not need Admin metafields for day-to-day
-copy edits when Theme Editor blocks are filled.
+Shipped meal-plan **page** templates use **separate sections** (not one mega
+`cm-meal-plan-page`). Example order on `page.6-meal-plan.json`:
 
-### 0.1 Left sidebar under CM meal plan page
+`cm-mp-order` → `cm-mp-hero` → `cm-mp-benefits` → `cm-mp-menu-grid` →
+`cm-mp-thali` → `cm-mp-explore` → `cm-mp-chef` → `cm-mp-steps` →
+`cm-mp-delivery` → `cm-mp-reviews` → `cm-mp-faq` → `cm-mp-related` → `cm-mp-cta`
 
-| Left sidebar name | Block type | What you edit |
+Click a band in the preview (or its name on the left) to open only that
+section’s settings/blocks.
+
+### 0.1 Left sidebar — section map
+
+| Left sidebar section | File | What you edit |
 |---|---|---|
-| **Hero** | `area_hero` | Plan label, heading, text, facts, badge (button labels here are fallback only) |
-| **Hero button** (×2) | `hero_button` | Each CTA: **Label**, **Link**, **Style** (white / orange). Click the button in the preview |
-| **Benefits** | `area_benefits` | Eyebrow + “6 meals. / 1 week. / Zero stress.” + note |
-| **Benefit** (chips) | `benefit` | One scrolling chip per block (Title + Text) |
-| **This week's menu** | `area_menu` | Menu / order band headings |
-| **How it works** / **Step** | `area_steps` / `step` | Steps heading + one card per Step block |
-| **Reviews** / **Review** | `area_reviews` / `review` | Reviews heading + one card per Review block |
-| **FAQ** / **FAQ** rows | `area_faq` / `faq` | FAQ heading + one Q&A per FAQ block |
-| Other folders | `area_*` | Chef, delivery, related, CTA, thali, explore, … |
+| **MP order** | `cm-mp-order` | This week’s menu / order box, plan product picker |
+| **MP Hero** | `cm-mp-hero` | Heading, text, **Hero button** blocks |
+| **MP Benefits** | `cm-mp-benefits` | Benefits copy + Benefit chip blocks |
+| **MP menu / thali / explore / chef** | `cm-mp-menu-grid`, `cm-mp-thali`, … | Menu grid, plate visual, explore, chef |
+| **MP steps / delivery / reviews / FAQ** | `cm-mp-steps`, … | Steps, delivery checker, reviews, FAQ |
+| **MP related / CTA** | `cm-mp-related`, `cm-mp-cta` | Related plans + closing CTA |
 
-Optional standalone sections **MP Hero** (`cm-mp-hero`) and **MP Benefits**
-(`cm-mp-benefits`) still exist if you Add section them, but the shipped 6-meal
-templates do **not** use them — everything lives under CM meal plan page.
-
-The **Premium ingredients / This week's menu** band (large plate image + meal
-list panel, `mealplan-q`) is **off** on 6-meal
-(`show_quality_band` = false). Turn that checkbox on in CM meal plan page if you
-want the band back; content still comes from `custom.quality_points` or Quality
-blocks.
+`cm-meal-plan-page` may still exist as a legacy combined section, but **current
+page templates** use the split stack above. See `PAGE-SECTIONS.md`.
 
 ### 0.2 How to edit (merchant steps)
 
 1. Online Store → Themes → **Customize**.
-2. Open the **6-meal-plan** page (or the 6 Meal Plan product with that template).
+2. Open the plan page (e.g. **6-meal-plan**).
 3. Hard-refresh once after a theme push.
-4. Click the **hero headline** → left selects **Hero** → edit heading / facts.
-5. Click **Build my 6 meals** or **View this week's menu** → left selects that
-   **Hero button** → edit Label, Link, Style on this page.
-6. Click a benefit chip / step card / review / FAQ row → edit that block.
-7. Section-level toggles (Plan product, delivery style, `show_quality_band`, …)
-   live on **CM meal plan page** itself (click the section header, not a folder).
-
-If preview click still selects the wrong row, click the matching name on the
-**left** under CM meal plan page — that always opens the right settings.
+4. Select the matching section on the **left** (Hero, Steps, FAQ, …).
+5. Edit section settings or that section’s blocks (Hero button, Benefit, Step, …).
+6. Plan product / order behaviour: open **MP order** (or the section that holds
+   the product picker).
 
 ### 0.3 Theme Editor blocks win over metafields
 
-When these blocks exist on the section, they drive the storefront (and Customize
-preview) so merchants are not blocked by filled product metafields:
+When these blocks exist on a section, they drive the storefront:
 
 | Block | Wins over |
 |---|---|
@@ -79,9 +66,8 @@ No blocks → metafields / section settings / defaults still apply.
 
 ### 0.4 Other plan sizes (5 / 7 / 10 / 15)
 
-Those templates also use **CM meal plan page**. Add the same area folders and
-content blocks (including two **Hero button** blocks) in Customize → Add block
-for the same click-to-edit UX as 6-meal.
+Those page templates use the same **split `cm-mp-*` stack**. Edit each band as
+its own section in Customize.
 
 ### 0.5 Order box behaviour (storefront)
 

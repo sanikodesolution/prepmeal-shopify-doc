@@ -50,6 +50,7 @@
 				<li><a href="#product_pages" title="Product Pages">Product &amp; Meal Details</a></li>
 				<li><a href="#delivery" title="Delivery Areas">Delivery Areas &amp; Map</a></li>
 				<li><a href="#gift_cards" title="Gift Cards">Gift Cards</a></li>
+				<li><a href="#page_sections" title="Page sections map">Page Sections Map</a></li>
 				<li><a href="#forms" title="Forms">Contact &amp; Newsletter</a></li>
 				<li><a href="#content_guide" title="Content Input">Content Input Guide</a></li>
 				<li><a href="#javascript" title="JavaScript">JavaScript &amp; Animation</a></li>
@@ -94,7 +95,7 @@
 			<div class="banner auto-size" style="background-color: #092A49">
 				<div class="container-fluid text-white">
 					<h1><strong>Prep Meal</strong> documentation</h1>
-					<p style="opacity:.85;margin-top:8px;">Meal Prep &amp; Meal Plan Shopify 2.0 Theme — Version 1.3</p>
+					<p style="opacity:.85;margin-top:8px;">Meal Prep &amp; Meal Plan Shopify 2.0 Theme — Version 1.4</p>
 				</div>
 			</div>
 
@@ -131,7 +132,7 @@
 		<ul>
 			<li>Created: October 22, 2026</li>
 			<li>Last Update: October 26, 2026</li>
-			<li>Version 1.3</li>
+			<li>Version 1.4</li>
 			<li>By: SANI UL HASSAN</li>
 			<li>Email: <a href="mailto:sani.dev.business@gmail.com?subject=Prep Meal Shopify Theme Support">sani.dev.business@gmail.com</a></li>
 		</ul>
@@ -700,22 +701,22 @@ announcement-bar → delivery message, if one mentions a city
 				</thead>
 				<tbody>
 					<tr><td><code>index.json</code></td><td>Home page</td><td>Hero banner, 4-step features, image with text, parallax gallery, badge row, flavour wheel, product details, delivery areas</td></tr>
-					<tr><td><code>page.meal-plans.json</code></td><td>Meal plans landing</td><td><code>cm-meal-plan-page</code></td></tr>
-					<tr><td><code>page.5-meal-plan.json</code></td><td>5 plate plan</td><td><code>cm-meal-plan-page</code></td></tr>
-					<tr><td><code>page.6-meal-plan.json</code></td><td>6 plate plan</td><td><code>cm-mp-hero</code>, <code>cm-mp-benefits</code>, <code>cm-meal-plan-page</code></td></tr>
-					<tr><td><code>page.7-meal-plan.json</code></td><td>7 plate plan</td><td><code>cm-meal-plan-page</code></td></tr>
-					<tr><td><code>page.10-meal-plan.json</code></td><td>10 plate plan</td><td><code>cm-build-box</code>, <code>cm-meal-plan-page</code></td></tr>
-					<tr><td><code>page.15-meal-plan.json</code></td><td>15 plate plan</td><td><code>cm-meal-plan-page</code></td></tr>
+					<tr><td><code>page.meal-plans.json</code></td><td>Meal plans landing</td><td>Split <code>cm-mp-*</code> stack (order → hero → … → CTA)</td></tr>
+					<tr><td><code>page.5-meal-plan.json</code></td><td>5 plate plan</td><td>Split <code>cm-mp-*</code> stack</td></tr>
+					<tr><td><code>page.6-meal-plan.json</code></td><td>6 plate plan</td><td>Split <code>cm-mp-*</code> stack</td></tr>
+					<tr><td><code>page.7-meal-plan.json</code></td><td>7 plate plan</td><td>Split <code>cm-mp-*</code> stack</td></tr>
+					<tr><td><code>page.10-meal-plan.json</code></td><td>10 plate plan</td><td><code>cm-build-box</code> + split <code>cm-mp-*</code> stack</td></tr>
+					<tr><td><code>page.15-meal-plan.json</code></td><td>15 plate plan</td><td>Split <code>cm-mp-*</code> stack</td></tr>
 					<tr><td><code>page.about.json</code></td><td>About</td><td>Chef story, why-us rows, contact CTA</td></tr>
 					<tr><td><code>page.how-it-works.json</code></td><td>How it works</td><td>Hero, steps, FAQ, contact CTA</td></tr>
 					<tr><td><code>page.faqs.json</code></td><td>FAQs</td><td>Four collapsible content groups (ordering, products, heating, delivery)</td></tr>
 					<tr><td><code>page.delivery-areas.json</code></td><td>Delivery areas</td><td>Delivery areas, steps, FAQ, contact CTA</td></tr>
 					<tr><td><code>page.contact.json</code></td><td>Contact</td><td>Page content, contact page form and details</td></tr>
-					<tr><td><code>page.gift-cards.json</code></td><td>Gift cards</td><td><code>cm-gift-card</code></td></tr>
-					<tr><td><code>page.private-chef-experience.json</code></td><td>Private chef</td><td><code>cm-private-chef</code></td></tr>
+					<tr><td><code>page.gift-cards.json</code></td><td>Gift cards</td><td><code>cm-gift-card</code> → how → FAQ → reviews</td></tr>
+					<tr><td><code>page.gift-card-editor.json</code></td><td>Gift card editor</td><td><code>cm-gift-card-editor</code></td></tr>
+					<tr><td><code>page.private-chef-experience.json</code></td><td>Private chef</td><td>PC hero → occasions → expect → steps → quote form</td></tr>
 					<tr><td><code>page.custom-meal-plans.json</code></td><td>Custom plans</td><td>Page content, rich text, contact form</td></tr>
 					<tr><td><code>page.json</code></td><td>Default page</td><td><code>main-page</code></td></tr>
-					<tr><td><code>page.burgers.json</code>, <code>page.burgers-light.json</code></td><td>Alt menu demo</td><td>Food hero, food menu, food features</td></tr>
 				</tbody>
 			</table>
 		</div>
@@ -769,9 +770,11 @@ announcement-bar → delivery message, if one mentions a city
 					</tr>
 				</thead>
 				<tbody>
-					<tr><td><code>cm-meal-plan-page</code></td><td>CM meal plan page</td><td>Full plan landing: Hero + Hero button blocks, benefits chips, weekly menu, order box, explore, chef, steps, optional Premium ingredients band (<code>show_quality_band</code>, off on 6-meal), gallery, delivery, reviews, FAQ, related, CTA</td><td>area_*, hero_button, meal, benefit, step, quality, menu_item, review, faq, related</td></tr>
-					<tr><td><code>cm-mp-hero</code></td><td>MP Hero</td><td>Optional standalone hero (Add section) — shipped 6-meal uses <code>area_hero</code> + <code>hero_button</code> inside CM meal plan page</td><td>—</td></tr>
-					<tr><td><code>cm-mp-benefits</code></td><td>MP Benefits</td><td>Optional standalone benefits — shipped 6-meal uses <code>area_benefits</code> + Benefit blocks inside CM meal plan page</td><td>benefit</td></tr>
+					<tr><td><code>cm-meal-plan-page</code></td><td>CM meal plan page</td><td>Legacy combined plan landing (optional). Current page templates use the split <code>cm-mp-*</code> stack instead</td><td>area_*, hero_button, meal, benefit, step, review, faq, …</td></tr>
+					<tr><td><code>cm-mp-order</code></td><td>MP order</td><td>This week’s menu / order box + plan product</td><td>—</td></tr>
+					<tr><td><code>cm-mp-hero</code></td><td>MP Hero</td><td>Plan hero with Hero button blocks (shipped on plan pages)</td><td>hero_button</td></tr>
+					<tr><td><code>cm-mp-benefits</code></td><td>MP Benefits</td><td>Benefits band + chips (shipped on plan pages)</td><td>benefit</td></tr>
+					<tr><td><code>cm-mp-menu-grid</code> … <code>cm-mp-cta</code></td><td>MP menu / thali / explore / chef / steps / delivery / reviews / FAQ / related / CTA</td><td>One content job per section — see <a href="#page_sections">Page Sections Map</a></td><td>step, review, faq, …</td></tr>
 					<tr><td><code>cm-mp-band</code></td><td>MP Text band</td><td>Optional extra story or final CTA band</td><td>—</td></tr>
 					<tr><td><code>cm-build-box</code></td><td>CM build your box</td><td>Slot-based box builder that adds the selected plates to the cart</td><td>— (uses plan variants)</td></tr>
 					<tr><td><code>cm-mp7</code></td><td>7 Meal Plan</td><td>Single-section plan page for the 7 plate plan</td><td>meal, way_meal, feature, testimonial, step, popular, faq, favorite</td></tr>
@@ -788,8 +791,16 @@ announcement-bar → delivery message, if one mentions a city
 					<tr><td><code>cm-arc-carousel</code></td><td>CM 3D product carousel</td><td>Curved carousel of products or items</td><td>item</td></tr>
 					<tr><td><code>cm-delivery-areas</code></td><td>CM delivery areas</td><td>List of served towns with feature icons and plate art</td><td>area, feature</td></tr>
 					<tr><td><code>cm-delivery-map</code></td><td>CM delivery map</td><td>Leaflet map with pins and a name/address popup</td><td>pin</td></tr>
-					<tr><td><code>cm-gift-card</code></td><td>CM gift card</td><td>Gift card amount, recipient, date, message and checkout</td><td>fact, step, faq, review</td></tr>
-					<tr><td><code>cm-private-chef</code></td><td>CM private chef</td><td>Private chef landing with occasions, expectations and enquiry form</td><td>perk, occasion, expect, step, field</td></tr>
+					<tr><td><code>cm-gift-card</code></td><td>CM gift card</td><td>Card visual + buy form + ticker strip</td><td>—</td></tr>
+					<tr><td><code>cm-gift-card-how</code></td><td>GC how it works</td><td>Gift card steps</td><td>step</td></tr>
+					<tr><td><code>cm-gift-card-faq</code></td><td>GC FAQ</td><td>Gift card FAQ</td><td>faq</td></tr>
+					<tr><td><code>cm-gift-card-reviews</code></td><td>GC reviews</td><td>Reviews list + write form</td><td>review</td></tr>
+					<tr><td><code>cm-gift-card-editor</code></td><td>Gift card editor</td><td>Live preview editor (size, typography, colors, PNG/SVG)</td><td>—</td></tr>
+					<tr><td><code>cm-private-chef</code></td><td>PC hero</td><td>Private chef hero + perk strip</td><td>perk</td></tr>
+					<tr><td><code>cm-private-chef-occasions</code></td><td>PC occasions</td><td>Occasion chips</td><td>occasion</td></tr>
+					<tr><td><code>cm-private-chef-expect</code></td><td>PC expect</td><td>Expect list + quote</td><td>expect</td></tr>
+					<tr><td><code>cm-private-chef-steps</code></td><td>PC steps</td><td>How it works (<code>#pc-how</code>)</td><td>step</td></tr>
+					<tr><td><code>cm-private-chef-quote</code></td><td>PC quote form</td><td>Enquiry form (<code>#pc-quote</code>)</td><td>field</td></tr>
 					<tr><td><code>cm-contact-page</code></td><td>CM contact page</td><td>Contact page with details panel and contact form</td><td>contact_item</td></tr>
 					<tr><td><code>cm-contact-form</code></td><td>CM contact form</td><td>Configurable contact form with custom fields</td><td>field, group_heading</td></tr>
 					<tr><td><code>cm-contact-cta</code></td><td>CM contact CTA</td><td>Closing call to action band</td><td>—</td></tr>
@@ -1535,15 +1546,27 @@ Or, with no numbers at all:
 		<div class="page-header">
 			<h3>Gift Cards</h3>
 		</div>
-		<p><code>cm-gift-card</code> is a complete purchase form. It adds a Shopify gift card product to the cart with recipient details attached as line-item properties, which Shopify uses to issue the card.</p>
+		<p>The gift cards page is split into separate sections. <code>cm-gift-card</code> is the purchase form (card visual + amounts + recipient fields). How-it-works, FAQ and reviews live in their own sections so you can reorder or hide them in the theme editor.</p>
+		<div class="table-responsive">
+			<table class="table table-bordered table-striped" style="font-size:13px;">
+				<thead><tr><th>Section</th><th>Job</th></tr></thead>
+				<tbody>
+					<tr><td><code>cm-gift-card</code></td><td>Visual + buy form + ticker strip</td></tr>
+					<tr><td><code>cm-gift-card-how</code></td><td>Steps</td></tr>
+					<tr><td><code>cm-gift-card-faq</code></td><td>FAQ</td></tr>
+					<tr><td><code>cm-gift-card-reviews</code></td><td>Reviews + write form</td></tr>
+					<tr><td><code>cm-gift-card-editor</code></td><td>Optional design tool page (size, typography ≥14px, PNG/SVG export)</td></tr>
+				</tbody>
+			</table>
+		</div>
 		<h5>Setup</h5>
 		<ol>
 			<li>Create a gift card product with one variant per amount (for example $25, $50, $100).</li>
-			<li>Assign <code>page.gift-cards.json</code> to a page, or add the <code>cm-gift-card</code> section to any page.</li>
-			<li>Select the product in <strong>Gift card product</strong> and set <strong>Default amount</strong> to the variant you want preselected.</li>
-			<li>Edit the fallback amount list, hints and fine print as needed.</li>
+			<li>Assign <code>page.gift-cards.json</code> to a page.</li>
+			<li>In <strong>CM gift card</strong>, select the product and set <strong>Default amount</strong>.</li>
+			<li>Edit how / FAQ / reviews in their own sections as needed.</li>
 		</ol>
-		<h5>Fields collected</h5>
+		<h5>Fields collected (buy section)</h5>
 		<div class="table-responsive">
 			<table class="table table-bordered table-striped" style="font-size:13px;">
 				<thead>
@@ -1561,7 +1584,21 @@ Or, with no numbers at all:
 				</tbody>
 			</table>
 		</div>
-		<p>The section also ships optional facts, how-it-works steps, FAQ and review blocks, so the page is complete without extra sections. A ticker strip (<code>strip_text</code>, <code>strip_speed</code>) spans the top.</p>
+		<p>Full page map: <a href="#page_sections">Page Sections Map</a> and <code>PAGE-SECTIONS.md</code>.</p>
+	</section>
+
+	<section id="page_sections">
+		<div class="page-header">
+			<h3>Page Sections Map</h3>
+		</div>
+		<p><strong>Rule:</strong> one content job per theme section. Do not nest how-it-works, FAQ, reviews or forms inside a single mega-section.</p>
+		<ul>
+			<li><strong>Gift cards</strong> — buy → how → FAQ → reviews</li>
+			<li><strong>Private chef</strong> — hero → occasions → expect → steps → quote form</li>
+			<li><strong>Meal plan pages</strong> — split <code>cm-mp-*</code> stack (order through CTA)</li>
+			<li><strong>Gift card editor</strong> — intentionally one section (single interactive UI)</li>
+		</ul>
+		<p>Markdown source of truth in this doc repo: <code>PAGE-SECTIONS.md</code>. Update that file whenever page structure changes.</p>
 	</section>
 
 	<section id="forms">
@@ -1573,7 +1610,7 @@ Or, with no numbers at all:
 		<ul>
 			<li><strong><code>cm-contact-page</code></strong> — the full contact page: details panel, ticket-style form and privacy note.</li>
 			<li><strong><code>cm-contact-form</code></strong> — a reusable form you can drop on any page, with configurable field blocks.</li>
-			<li><strong><code>cm-private-chef</code></strong> — enquiry form with occasion and date fields.</li>
+			<li><strong><code>cm-private-chef-quote</code></strong> — enquiry form with field blocks (hero / occasions / expect / steps are separate sections).</li>
 			<li><strong><code>contact-form</code></strong> — the standard Shopify contact section.</li>
 		</ul>
 		<p>Field labels, placeholders, required state and half-width layout are set per <code>field</code> block:</p>
@@ -1839,6 +1876,17 @@ Field block:
 					</tr>
 				</thead>
 				<tbody>
+					<tr>
+						<td><strong>1.4.0</strong></td>
+						<td>November 9, 2026</td>
+						<td>
+							<ul>
+								<li><strong>Page structure:</strong> Gift cards and Private chef pages split into separate content sections (no mega-section nesting). Meal plan pages document the shipped <code>cm-mp-*</code> stack.</li>
+								<li>Added gift card editor page (<code>cm-gift-card-editor</code>) with card size + typography controls (min 14px; no Download-folder fonts).</li>
+								<li>Documentation: new <code>PAGE-SECTIONS.md</code>, updated Templates / Sections / Gift Cards, CONTENT-GUIDE and PLAN-PRODUCT-CONTENT.</li>
+							</ul>
+						</td>
+					</tr>
 					<tr>
 						<td><strong>1.3.1</strong></td>
 						<td>November 5, 2026</td>
