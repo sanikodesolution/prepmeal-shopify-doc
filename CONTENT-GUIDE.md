@@ -45,16 +45,22 @@
 
 **Gift cards** ও **Private chef** পেজও একই নিয়মে split — বিস্তারিত `PAGE-SECTIONS.md`।
 
-### ২.১ Hero (হোমপেজের ব্যানার)
+### ২.১ Hero (হোমপেজের ব্যানার — Image banner)
 
-**মোড:** শুধু Customizer (Metaobject লাগবে না)। প্ল্যান পেজের Hero আলাদা — উপরের **Hero** / **Hero button** ব্লক দেখুন।
+**মোড:** শুধু Customizer (Metaobject লাগবে না)। প্ল্যান পেজের Hero আলাদা — উপরের **MP Hero** সেকশন দেখুন।
+
+বামে **Text** / **Heading** / **Buttons** ব্লক সিলেক্ট করলে ডান সাইডবারে এডিট হয়।
 
 | ফিল্ড | ধরন | নির্দেশনা |
 |---|---|---|
-| Heading | Text | সর্বোচ্চ ৬০ অক্ষর। যেমন: "সারা সপ্তাহের খাবার, রেডি।" |
-| Text / subheading | Text | সর্বোচ্চ ১২০ অক্ষর। এক বাক্যে মূল সুবিধা |
-| Background image | Image | ১৯২০×১০৮০ px, ৩০০ KB এর নিচে, খাবারের উপর টেক্সট পড়া যায় এমন ছবি |
-| Button label / link | Text / URL | লেবেল ২–৩ শব্দ ("প্ল্যান দেখুন")। লিংক: কালেকশন বা প্ল্যান পেজ |
+| Heading / Text | Inline richtext | কপি এডিট |
+| Style | Select | Heading size (h2…hxxl) বা Text style (body / subtitle / caption) |
+| **Typography → Text color** | Color | প্রতিটি টেক্সট ব্লকের রং |
+| **Typography → Font size** | Range | `0` = Style প্রিসেট; কাস্টম সাইজ **১৪px+** |
+| **Typography → Font weight** | Select | Theme default / 400–800 |
+| **Typography → Letter spacing / Line height** | Range | `0` = থিম ডিফল্ট |
+| Buttons | Labels + colors + font size | আগের মতো প্রতি বাটনে আলাদা |
+| Background image | Image | ১৯২০×১০৮০ px, ৩০০ KB এর নিচে |
 
 ### ২.২ Meal Plans (প্ল্যান)
 
