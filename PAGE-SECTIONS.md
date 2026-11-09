@@ -75,6 +75,22 @@ Shipped templates use **separate** `cm-mp-*` sections (not one mega `cm-meal-pla
 - Typography: font family / weight / per-line sizes (minimum **14px**)
 - Do **not** load fonts from a local Downloads folder; use theme fonts or Google fonts via the editor JS
 
+## Text typography & background (theme-wide)
+
+Meal-prep and core content sections share per-text controls (via `pm-block-type-style`). For each text role in the theme editor:
+
+| Group | Controls |
+| --- | --- |
+| Typography | Text color, font size (0 = theme default; custom ≥ **14px**), weight, letter spacing, line height |
+| Spacing | Padding / margin (default 0 = look unchanged) |
+| Background | Background **color** and/or **image**, image size (cover / contain / auto), image position |
+| Image mask | None, Fade bottom, Fade edges, Circle, Soft vignette, Rounded box, Custom mask image |
+| Clip to letters | Optional knockout: fill letter shapes with the background color/image |
+
+Clear a color swatch to reset that color. Leave image/mask empty when unused.
+
+Applies across CM sections, gift card, private chef, `cm-mp-*` meal-plan stack, SS Feature #1, Image banner, Image with text, rich text, newsletter, and related blocks. See **Sections Reference** in `index.html`.
+
 ## Workflow
 
 1. Prefer **Add section** over stuffing unrelated blocks into another section.

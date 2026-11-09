@@ -132,7 +132,7 @@
 		<ul>
 			<li>Created: October 22, 2026</li>
 			<li>Last Update: November 9, 2026</li>
-			<li>Version 1.4</li>
+			<li>Version 1.4.6</li>
 			<li>By: SANI UL HASSAN</li>
 			<li>Email: <a href="mailto:sani.dev.business@gmail.com?subject=Prep Meal Shopify Theme Support">sani.dev.business@gmail.com</a></li>
 		</ul>
@@ -304,7 +304,7 @@ shopify theme push --store your-store.myshopify.com --theme 123456789 --only sec
 				<tbody>
 					<tr><td><strong>Logo</strong></td><td>Logo image or theme asset filename, logo width, favicon.</td></tr>
 					<tr><td><strong>Colors</strong></td><td>Color schemes used by sections: background, text, button, secondary label and shadow.</td></tr>
-					<tr><td><strong>Typography</strong></td><td>Heading and body font, heading scale, body scale.</td></tr>
+					<tr><td><strong>Typography</strong></td><td>Heading and body font, heading scale, body scale. Per-section text roles also have typography, spacing, and text background (color / image / mask) — see Sections Reference.</td></tr>
 					<tr><td><strong>Layout</strong></td><td>Page width in px, section spacing, grid spacing.</td></tr>
 					<tr><td><strong>Animations</strong></td><td>Scroll reveal, GSAP animations, hover effects.</td></tr>
 					<tr><td><strong>Buttons / Inputs / Cards</strong></td><td>Border thickness, corner radius, shadow for buttons, variant pills, inputs, product cards, collection cards, blog cards, text boxes, media, popups and drawers.</td></tr>
@@ -772,54 +772,65 @@ announcement-bar → delivery message, if one mentions a city
 				<tbody>
 					<tr><td><code>cm-meal-plan-page</code></td><td>CM meal plan page</td><td>Legacy combined plan landing (optional). Current page templates use the split <code>cm-mp-*</code> stack instead</td><td>area_*, hero_button, meal, benefit, step, review, faq, …</td></tr>
 					<tr><td><code>cm-mp-order</code></td><td>MP order</td><td>This week’s menu / order box + plan product</td><td>—</td></tr>
-					<tr><td><code>cm-mp-hero</code></td><td>MP Hero</td><td>Plan hero with Hero button blocks (shipped on plan pages)</td><td>hero_button</td></tr>
-					<tr><td><code>cm-mp-benefits</code></td><td>MP Benefits</td><td>Benefits band + chips (shipped on plan pages)</td><td>benefit</td></tr>
-					<tr><td><code>cm-mp-menu-grid</code> … <code>cm-mp-cta</code></td><td>MP menu / thali / explore / chef / steps / delivery / reviews / FAQ / related / CTA</td><td>One content job per section — see <a href="#page_sections">Page Sections Map</a></td><td>step, review, faq, …</td></tr>
+					<tr><td><code>cm-mp-hero</code></td><td>MP Hero</td><td>Plan hero with Hero button blocks (shipped on plan pages). Text roles: typography + spacing + text background (color / image / mask).</td><td>hero_button</td></tr>
+					<tr><td><code>cm-mp-benefits</code></td><td>MP Benefits</td><td>Benefits band + chips (shipped on plan pages). Text roles: typography + spacing + text background (color / image / mask).</td><td>benefit</td></tr>
+					<tr><td><code>cm-mp-menu-grid</code> … <code>cm-mp-cta</code></td><td>MP menu / thali / explore / chef / steps / delivery / reviews / FAQ / related / CTA</td><td>One content job per section — see <a href="#page_sections">Page Sections Map</a>. Shared text typography + spacing + text background (color / image / mask).</td><td>step, review, faq, …</td></tr>
 					<tr><td><code>cm-mp-band</code></td><td>MP Text band</td><td>Optional extra story or final CTA band</td><td>—</td></tr>
 					<tr><td><code>cm-build-box</code></td><td>CM build your box</td><td>Slot-based box builder that adds the selected plates to the cart</td><td>— (uses plan variants)</td></tr>
 					<tr><td><code>cm-mp7</code></td><td>7 Meal Plan</td><td>Single-section plan page for the 7 plate plan</td><td>meal, way_meal, feature, testimonial, step, popular, faq, favorite</td></tr>
-					<tr><td><code>cm-product-details</code></td><td>Product details</td><td>Meal detail block with dish switcher, nutrition, accordions and plan pricing. Section: Eyebrow/Heading/Description/Price/Note typography + spacing. Detail blocks: Title + Text typography + spacing. Defaults unchanged until set.</td><td>dish, accordion</td></tr>
+					<tr><td><code>cm-product-details</code></td><td>Product details</td><td>Meal detail block with dish switcher, nutrition, accordions and plan pricing. Section: Eyebrow/Heading/Description/Price/Note typography + spacing. Detail blocks: Title + Text typography + spacing + text background (color / image / mask). Defaults unchanged until set.</td><td>dish, accordion</td></tr>
 					<tr><td><code>prep-meal-details</code></td><td>Prep meal details</td><td>Nutrition, ingredients, allergens, diet tags read from product metafields</td><td>—</td></tr>
-					<tr><td><code>cm-hero</code></td><td>CM hero + ticker</td><td>Hero with a scrolling ticker band and numbered chips</td><td>chip</td></tr>
-					<tr><td><code>cm-steps</code></td><td>CM how it works</td><td>Numbered or timeline steps</td><td>step</td></tr>
-					<tr><td><code>cm-plans</code></td><td>CM meal plans</td><td>Plan comparison cards</td><td>plan</td></tr>
-					<tr><td><code>cm-featured-plan</code></td><td>CM weekly table</td><td>Weekly menu table with stamp</td><td>dish</td></tr>
-					<tr><td><code>cm-usp</code></td><td>CM why us rows</td><td>Alternating image and text rows. Section: Label/Heading typography + spacing. Row blocks: Label/Title/Text typography + spacing. Defaults unchanged until set.</td><td>row</td></tr>
-					<tr><td><code>cm-chef-story</code></td><td>CM chef story</td><td>Chef bio with image or video and pull quote. Section: Eyebrow/Heading/Body/Quote typography + spacing. Defaults unchanged until set.</td><td>—</td></tr>
-					<tr><td><code>cm-parallax-gallery</code></td><td>CM parallax gallery</td><td>Numbered parallax image story (The Chef Matt Way). Each Image block: Heading + Text typography (color, size ≥14px, weight, letter spacing, line height) and padding/margin. Defaults unchanged until set.</td><td>item</td></tr>
-					<tr><td><code>cm-thali-wheel</code></td><td>Thali wheel</td><td>Circular photo wheel. Section: Eyebrow/Heading/Text/Plate caption typography + spacing. Each Plate: Title typography + spacing. Defaults unchanged until set.</td><td>item</td></tr>
-					<tr><td><code>cm-arc-carousel</code></td><td>CM 3D product carousel</td><td>Curved carousel of products or items</td><td>item</td></tr>
-					<tr><td><code>cm-delivery-areas</code></td><td>CM delivery areas</td><td>List of served towns with feature icons and plate art. Section: Eyebrow/Heading/Subheading/Deliver label/Area pill typography + spacing. Feature blocks: Title + Text typography + spacing. Defaults unchanged until set.</td><td>area, feature</td></tr>
-					<tr><td><code>cm-delivery-map</code></td><td>CM delivery map</td><td>Leaflet map with pins and a name/address popup</td><td>pin</td></tr>
-					<tr><td><code>cm-gift-card</code></td><td>CM gift card</td><td>Card visual + buy form + ticker strip</td><td>—</td></tr>
-					<tr><td><code>cm-gift-card-how</code></td><td>GC how it works</td><td>Gift card steps</td><td>step</td></tr>
-					<tr><td><code>cm-gift-card-faq</code></td><td>GC FAQ</td><td>Gift card FAQ</td><td>faq</td></tr>
-					<tr><td><code>cm-gift-card-reviews</code></td><td>GC reviews</td><td>Reviews list + write form</td><td>review</td></tr>
+					<tr><td><code>cm-hero</code></td><td>CM hero + ticker</td><td>Hero with a scrolling ticker band and numbered chips. Text roles: typography + spacing + text background (color / image / mask).</td><td>chip</td></tr>
+					<tr><td><code>cm-steps</code></td><td>CM how it works</td><td>Numbered or timeline steps. Text roles: typography + spacing + text background (color / image / mask).</td><td>step</td></tr>
+					<tr><td><code>cm-plans</code></td><td>CM meal plans</td><td>Plan comparison cards. Text roles: typography + spacing + text background (color / image / mask).</td><td>plan</td></tr>
+					<tr><td><code>cm-featured-plan</code></td><td>CM weekly table</td><td>Weekly menu table with stamp. Text roles: typography + spacing + text background (color / image / mask).</td><td>dish</td></tr>
+					<tr><td><code>cm-usp</code></td><td>CM why us rows</td><td>Alternating image and text rows. Section: Label/Heading typography + spacing. Row blocks: Label/Title/Text typography + spacing + text background (color / image / mask). Defaults unchanged until set.</td><td>row</td></tr>
+					<tr><td><code>cm-chef-story</code></td><td>CM chef story</td><td>Chef bio with image or video and pull quote. Section: Eyebrow/Heading/Body/Quote typography + spacing + text background (color / image / mask). Defaults unchanged until set.</td><td>—</td></tr>
+					<tr><td><code>cm-parallax-gallery</code></td><td>CM parallax gallery</td><td>Numbered parallax image story (The Chef Matt Way). Each Image block: Heading + Text typography (color, size ≥14px, weight, letter spacing, line height), padding/margin, and text background (color / image / mask). Defaults unchanged until set.</td><td>item</td></tr>
+					<tr><td><code>cm-thali-wheel</code></td><td>Thali wheel</td><td>Circular photo wheel. Section: Eyebrow/Heading/Text/Plate caption typography + spacing. Each Plate: Title typography + spacing + text background (color / image / mask). Defaults unchanged until set.</td><td>item</td></tr>
+					<tr><td><code>cm-arc-carousel</code></td><td>CM 3D product carousel</td><td>Curved carousel of products or items. Text roles: typography + spacing + text background (color / image / mask).</td><td>item</td></tr>
+					<tr><td><code>cm-delivery-areas</code></td><td>CM delivery areas</td><td>List of served towns with feature icons and plate art. Section: Eyebrow/Heading/Subheading/Deliver label/Area pill typography + spacing. Feature blocks: Title + Text typography + spacing + text background (color / image / mask). Defaults unchanged until set.</td><td>area, feature</td></tr>
+					<tr><td><code>cm-delivery-map</code></td><td>CM delivery map</td><td>Leaflet map with pins and a name/address popup. Text roles: typography + spacing + text background (color / image / mask).</td><td>pin</td></tr>
+					<tr><td><code>cm-gift-card</code></td><td>CM gift card</td><td>Card visual + buy form + ticker strip. Text roles: typography + spacing + text background (color / image / mask). Card colors clearable to reset.</td><td>—</td></tr>
+					<tr><td><code>cm-gift-card-how</code></td><td>GC how it works</td><td>Gift card steps. Text roles: typography + spacing + text background (color / image / mask).</td><td>step</td></tr>
+					<tr><td><code>cm-gift-card-faq</code></td><td>GC FAQ</td><td>Gift card FAQ. Text roles: typography + spacing + text background (color / image / mask).</td><td>faq</td></tr>
+					<tr><td><code>cm-gift-card-reviews</code></td><td>GC reviews</td><td>Reviews list + write form. Text roles: typography + spacing + text background (color / image / mask).</td><td>review</td></tr>
 					<tr><td><code>cm-gift-card-editor</code></td><td>Gift card editor</td><td>Live preview editor (size, typography, colors, PNG/SVG)</td><td>—</td></tr>
-					<tr><td><code>cm-private-chef</code></td><td>PC hero</td><td>Private chef hero + perk strip</td><td>perk</td></tr>
-					<tr><td><code>cm-private-chef-occasions</code></td><td>PC occasions</td><td>Occasion chips</td><td>occasion</td></tr>
-					<tr><td><code>cm-private-chef-expect</code></td><td>PC expect</td><td>Expect list + quote</td><td>expect</td></tr>
-					<tr><td><code>cm-private-chef-steps</code></td><td>PC steps</td><td>How it works (<code>#pc-how</code>)</td><td>step</td></tr>
-					<tr><td><code>cm-private-chef-quote</code></td><td>PC quote form</td><td>Enquiry form (<code>#pc-quote</code>)</td><td>field</td></tr>
-					<tr><td><code>cm-contact-page</code></td><td>CM contact page</td><td>Contact page with details panel and contact form. Section: Page heading/Lead/Panel heading/Panel note/Ticket heading/Ticket note typography + spacing. Contact detail blocks: Label + Value typography + spacing; Value also has Background color. Defaults unchanged until set.</td><td>contact_item</td></tr>
-					<tr><td><code>cm-contact-form</code></td><td>CM contact form</td><td>Configurable contact form with custom fields</td><td>field, group_heading</td></tr>
-					<tr><td><code>cm-contact-cta</code></td><td>CM contact CTA</td><td>Closing call to action band. Section: Label/Heading/Text typography + spacing. Defaults unchanged until set.</td><td>—</td></tr>
-					<tr><td><code>cm-footer</code></td><td>Chef Matt footer</td><td>Footer with CTA band, link columns, contact and newsletter. Section: CTA eyebrow/heading/text/promises, about, newsletter, copyright typography + spacing. Column blocks: Heading + link/contact text typography + spacing. Defaults unchanged until set.</td><td>links, menu, contact</td></tr>
+					<tr><td><code>cm-private-chef</code></td><td>PC hero</td><td>Private chef hero + perk strip. Text roles: typography + spacing + text background (color / image / mask).</td><td>perk</td></tr>
+					<tr><td><code>cm-private-chef-occasions</code></td><td>PC occasions</td><td>Occasion chips. Text roles: typography + spacing + text background (color / image / mask).</td><td>occasion</td></tr>
+					<tr><td><code>cm-private-chef-expect</code></td><td>PC expect</td><td>Expect list + quote. Text roles: typography + spacing + text background (color / image / mask).</td><td>expect</td></tr>
+					<tr><td><code>cm-private-chef-steps</code></td><td>PC steps</td><td>How it works (<code>#pc-how</code>). Text roles: typography + spacing + text background (color / image / mask).</td><td>step</td></tr>
+					<tr><td><code>cm-private-chef-quote</code></td><td>PC quote form</td><td>Enquiry form (<code>#pc-quote</code>). Text roles: typography + spacing + text background (color / image / mask).</td><td>field</td></tr>
+					<tr><td><code>cm-contact-page</code></td><td>CM contact page</td><td>Contact page with details panel and contact form. Section: Page heading/Lead/Panel heading/Panel note/Ticket heading/Ticket note typography + spacing + text background (color / image / mask). Contact detail blocks: Label + Value typography + spacing + text background. Defaults unchanged until set.</td><td>contact_item</td></tr>
+					<tr><td><code>cm-contact-form</code></td><td>CM contact form</td><td>Configurable contact form with custom fields. Text roles: typography + spacing + text background (color / image / mask).</td><td>field, group_heading</td></tr>
+					<tr><td><code>cm-contact-cta</code></td><td>CM contact CTA</td><td>Closing call to action band. Section: Label/Heading/Text typography + spacing + text background (color / image / mask). Defaults unchanged until set.</td><td>—</td></tr>
+					<tr><td><code>cm-footer</code></td><td>Chef Matt footer</td><td>Footer with CTA band, link columns, contact and newsletter. Section: CTA eyebrow/heading/text/promises, about, newsletter, copyright typography + spacing. Column blocks: Heading + link/contact text typography + spacing + text background (color / image / mask). Defaults unchanged until set.</td><td>links, menu, contact</td></tr>
 					<tr><td><code>meal-plans</code></td><td>Meal plans</td><td>Plan card grid, Metaobject or blocks</td><td>plan</td></tr>
 					<tr><td><code>faq</code></td><td>FAQ</td><td>Accordion FAQ, Metaobject or blocks</td><td>faq</td></tr>
 					<tr><td><code>testimonials</code></td><td>Testimonials</td><td>Review grid with star ratings, Metaobject or blocks</td><td>testimonial</td></tr>
 					<tr><td><code>delivery-zones</code></td><td>Delivery zones</td><td>Zone cards with days, cut-off, fee and minimum, Metaobject or blocks</td><td>zone</td></tr>
 					<tr><td><code>how-it-works</code></td><td>How it works</td><td>Steps list, Metaobject or blocks</td><td>step</td></tr>
-					<tr><td><code>ss-feature-1</code></td><td>SS Feature #1</td><td>Icon or animation feature grid. Section Feature heading/text settings: color, size, weight, letter spacing, line height, padding/margin (defaults unchanged). Optional per-item Title/Body overrides.</td><td>image</td></tr>
-					<tr><td><code>image-banner</code></td><td>Image banner</td><td>Hero banner (Prep meal style). Each <strong>Heading</strong> / <strong>Text</strong> block has Typography: color, font size (0 = Style preset; custom ≥14px), weight, letter spacing, line height. Buttons already have color/size controls.</td><td>heading, text, buttons</td></tr>
-					<tr><td><code>image-with-text</code></td><td>Image with text</td><td>Two-column content with optional overlay card. Caption / Heading / Text blocks each have Typography (color, size ≥14px, weight, letter spacing, line height). Button has color/size controls.</td><td>caption, heading, text, button</td></tr>
-					<tr><td><code>collapsible-content</code></td><td>Collapsible content</td><td>FAQ groups used on the FAQ page</td><td>collapsible_row</td></tr>
+					<tr><td><code>ss-feature-1</code></td><td>SS Feature #1</td><td>Icon or animation feature grid. Section Feature heading/text settings: color, size, weight, letter spacing, line height, padding/margin. Per-item Title/Body: typography + spacing + text background (color / image / mask). Defaults unchanged until set.</td><td>image</td></tr>
+					<tr><td><code>image-banner</code></td><td>Image banner</td><td>Hero banner (Prep meal style). Each <strong>Heading</strong> / <strong>Text</strong> block: Typography (color, size ≥14px, weight, letter spacing, line height), spacing, and text background (color / image / mask). Buttons already have color/size controls.</td><td>heading, text, buttons</td></tr>
+					<tr><td><code>image-with-text</code></td><td>Image with text</td><td>Two-column content with optional overlay card. Caption / Heading / Text blocks: Typography + spacing + text background (color / image / mask). Button has color/size controls.</td><td>caption, heading, text, button</td></tr>
+					<tr><td><code>collapsible-content</code></td><td>Collapsible content</td><td>FAQ groups used on the FAQ page. Heading/text typography + spacing + text background where wired.</td><td>collapsible_row</td></tr>
 					<tr><td><code>food-hero</code>, <code>food-menu</code>, <code>food-features</code></td><td>Food hero / menu / features</td><td>Alt burger demo</td><td>menu item, feature</td></tr>
 				</tbody>
 			</table>
 		</div>
 		<div class="doc-note">
 			<strong>Spacing is per section.</strong> Every meal-prep section has <code>padding_top</code> and <code>padding_bottom</code> in px, and most have a <code>background</code> choice of cream, warm or white. Match the surrounding sections so the page rhythm stays even.
+		</div>
+		<div class="doc-note">
+			<strong>Text typography &amp; background (theme-wide).</strong> Meal-prep and core content sections share the same per-text controls via <code>pm-block-type-style</code>. For each text role (Label / Heading / Title / Body / Caption / …) the theme editor can set:
+			<ul style="margin:8px 0 0 18px;">
+				<li><strong>Typography:</strong> text color, font size (0 = theme default; custom sizes start at 14px), weight, letter spacing, line height</li>
+				<li><strong>Spacing:</strong> padding and margin (defaults 0 = unchanged look)</li>
+				<li><strong>Background:</strong> background color and/or background image, image size (cover / contain / auto), image position</li>
+				<li><strong>Image mask:</strong> None, Fade bottom, Fade edges, Circle, Soft vignette, Rounded box, or Custom mask image</li>
+				<li><strong>Clip background to letters:</strong> fills letter shapes with the background color/image (knockout text)</li>
+			</ul>
+			<p style="margin:8px 0 0;">Clear a color swatch to reset that color. Leave image/mask empty for no background treatment. Applies across CM sections, gift card, private chef, meal-plan (<code>cm-mp-*</code>), SS Feature #1, Image banner, Image with text, rich text, newsletter, and related blocks.</p>
 		</div>
 	</section>
 
@@ -1881,7 +1892,9 @@ Field block:
 						<td>November 9, 2026</td>
 						<td>
 							<ul>
-								<li><strong>Theme-wide text backgrounds:</strong> Typography text roles get Background color, Background image, size/position, Image mask (fade / edges / circle / soft / rounded / custom), and Clip background to letters. Defaults unchanged until set.</li>
+								<li><strong>Theme-wide text backgrounds:</strong> Every typography text role (Label / Heading / Title / Body / Caption / …) now has Background color, Background image, image size/position, Image mask (None, Fade bottom, Fade edges, Circle, Soft vignette, Rounded box, Custom mask image), and Clip background to letters. Clear a color swatch to reset. Defaults unchanged until set.</li>
+								<li>Covers CM sections, gift card, private chef, meal-plan (<code>cm-mp-*</code>), SS Feature #1, Image banner, Image with text, rich text, newsletter, collapsible content, and related blocks — documented in Sections Reference.</li>
+								<li>Shared snippet <code>pm-block-type-style</code> applies typography, spacing, and backgrounds. Block colors correctly read from block settings (not theme settings).</li>
 							</ul>
 						</td>
 					</tr>
@@ -1890,7 +1903,7 @@ Field block:
 						<td>November 9, 2026</td>
 						<td>
 							<ul>
-								<li><strong>CM contact page</strong> (<code>cm-contact-page</code>): Page heading/Lead/Panel heading/Panel note/Ticket heading/Ticket note typography + spacing. Contact detail blocks: Label + Value typography + spacing. Defaults unchanged until set.</li>
+								<li><strong>CM contact page</strong> (<code>cm-contact-page</code>): Page heading/Lead/Panel heading/Panel note/Ticket heading/Ticket note typography + spacing. Contact detail blocks: Label + Value typography + spacing + text background (color / image / mask). Defaults unchanged until set.</li>
 							</ul>
 						</td>
 					</tr>
@@ -1900,8 +1913,8 @@ Field block:
 						<td>
 							<ul>
 								<li><strong>CM why us rows</strong> (<code>cm-usp</code>): section Label/Heading and each Row Label/Title/Text get typography (color, size ≥14px, weight, letter spacing, line height) plus padding/margin. Defaults unchanged until set.</li>
-								<li><strong>CM contact CTA</strong> (<code>cm-contact-cta</code>): Label/Heading/Text typography + spacing. Defaults unchanged until set.</li>
-								<li><strong>CM chef story</strong> (<code>cm-chef-story</code>): Eyebrow/Heading/Body/Quote typography + spacing. Defaults unchanged until set.</li>
+								<li><strong>CM contact CTA</strong> (<code>cm-contact-cta</code>): Label/Heading/Text typography + spacing + text background (color / image / mask). Defaults unchanged until set.</li>
+								<li><strong>CM chef story</strong> (<code>cm-chef-story</code>): Eyebrow/Heading/Body/Quote typography + spacing + text background (color / image / mask). Defaults unchanged until set.</li>
 							</ul>
 						</td>
 					</tr>
