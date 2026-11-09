@@ -81,9 +81,9 @@ Meal-prep and core content sections share per-text controls (via `pm-block-type-
 
 | Group | Controls |
 | --- | --- |
-| Typography | Text color, font size (0 = theme default; custom ≥ **14px**), weight, letter spacing, line height |
+| Typography | Text color, **Hover text color**, font size (0 = theme default; custom ≥ **14px**), weight, letter spacing, line height |
 | Spacing | Padding / margin (default 0 = look unchanged) |
-| Background | Background **color** and/or **image**, image size (cover / contain / auto), image position |
+| Background | Background **color**, **Hover background color**, and/or **image**, image size (cover / contain / auto), image position |
 | Image mask | None, Fade bottom, Fade edges, Circle, Soft vignette, Rounded box, Custom mask image |
 | Clip to letters | Optional knockout: fill letter shapes with the background color/image |
 
