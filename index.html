@@ -132,7 +132,7 @@
 		<ul>
 			<li>Created: October 22, 2026</li>
 			<li>Last Update: November 10, 2026</li>
-			<li>Version 1.4.9</li>
+			<li>Version 1.4.10</li>
 			<li>By: SANI UL HASSAN</li>
 			<li>Email: <a href="mailto:sani.dev.business@gmail.com?subject=Prep Meal Shopify Theme Support">sani.dev.business@gmail.com</a></li>
 		</ul>
@@ -801,7 +801,7 @@ announcement-bar → delivery message, if one mentions a city
 					<tr><td><code>cm-private-chef-expect</code></td><td>PC expect</td><td>Expect list + quote. Text roles: typography + spacing + text background (color / image / mask).</td><td>expect</td></tr>
 					<tr><td><code>cm-private-chef-steps</code></td><td>PC steps</td><td>How it works (<code>#pc-how</code>). Text roles: typography + spacing + text background (color / image / mask).</td><td>step</td></tr>
 					<tr><td><code>cm-private-chef-quote</code></td><td>PC quote form</td><td>Enquiry form (<code>#pc-quote</code>). Text roles: typography + spacing + text background (color / image / mask).</td><td>field</td></tr>
-					<tr><td><code>cm-contact-page</code></td><td>CM contact page</td><td>Contact page with details panel and contact form. Section: Page heading/Lead/Panel heading/Panel note/Ticket heading/Ticket note typography + spacing + text background (color / image / mask). Contact detail blocks: Label + Value typography + spacing + text background. Defaults unchanged until set.</td><td>contact_item</td></tr>
+					<tr><td><code>cm-contact-page</code></td><td>CM contact page</td><td>Contact page with details panel and contact form. Form inputs are <strong>Form field</strong> blocks; submit is a <strong>Submit button</strong> block (like Contact detail). Section: Page heading/Lead/Panel heading/Panel note/Ticket heading/Ticket note typography + spacing + text background. Contact detail blocks: Label + Value typography + spacing + text background. Defaults unchanged until set.</td><td>contact_item, form_field, form_button</td></tr>
 					<tr><td><code>cm-contact-form</code></td><td>CM contact form</td><td>Configurable contact form with custom fields. Text roles: typography + spacing + text background (color / image / mask).</td><td>field, group_heading</td></tr>
 					<tr><td><code>cm-contact-cta</code></td><td>CM contact CTA</td><td>Closing call to action band. Section: Label/Heading/Text typography + spacing + text background (color / image / mask). Defaults unchanged until set.</td><td>—</td></tr>
 					<tr><td><code>cm-footer</code></td><td>Chef Matt footer</td><td>Footer with CTA band, link columns, contact and newsletter. <strong>Call to action</strong> is its own block (limit 1) — eyebrow/heading/text/promises/buttons + typography + spacing + text background — not section settings. Section: about, newsletter, copyright typography + spacing + text background. Column blocks: Heading + link/contact text typography + spacing + text background. Defaults unchanged until set.</td><td>cta, links, menu, contact</td></tr>
@@ -1887,6 +1887,15 @@ Field block:
 					</tr>
 				</thead>
 				<tbody>
+					<tr>
+						<td><strong>1.4.10</strong></td>
+						<td>November 10, 2026</td>
+						<td>
+							<ul>
+								<li><strong>CM contact page form as blocks:</strong> Form inputs are <strong>Form field</strong> blocks and the submit control is a <strong>Submit button</strong> block under <code>cm-contact-page</code>, managed like Contact detail in the left sidebar.</li>
+							</ul>
+						</td>
+					</tr>
 					<tr>
 						<td><strong>1.4.9</strong></td>
 						<td>November 10, 2026</td>
