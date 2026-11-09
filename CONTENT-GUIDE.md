@@ -241,6 +241,7 @@ Dedicated `/pages/delivery` পেজ সরানো হয়েছে। এ�
 | এরিয়া | কোথায় | নির্দেশনা |
 |---|---|---|
 | Announcement bar | Customize → Header group → Announcement bar | ১টি বাক্য, সর্বোচ্চ ৮০ অক্ষর |
+| Footer CTA ব্যানার | Customizer → Footer → **Call to action** ব্লক | Custom links-এর মতো আলাদা ব্লক (limit 1)। Eyebrow / Heading / Text / Promises / Button / Phone এখানে |
 | Footer links | Customizer → Footer → **Menu** ব্লক, অথবা Footer-এর **Custom links** ব্লক | Menu ব্লকে Content → Menus থেকে মেনু বাছুন |
 | Social links | Theme settings → **Social media** | পুরো URL দিন (https://...) |
 | ফোন / ইমেইল / ঠিকানা | **Customizer → Footer → Contact info ব্লক** → Phone / Email / Delivery area or address | Theme settings-এ নয় — Footer সেকশনের ভেতরে |

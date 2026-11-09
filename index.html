@@ -131,8 +131,8 @@
 		<hr>
 		<ul>
 			<li>Created: October 22, 2026</li>
-			<li>Last Update: November 9, 2026</li>
-			<li>Version 1.4.6</li>
+			<li>Last Update: November 10, 2026</li>
+			<li>Version 1.4.8</li>
 			<li>By: SANI UL HASSAN</li>
 			<li>Email: <a href="mailto:sani.dev.business@gmail.com?subject=Prep Meal Shopify Theme Support">sani.dev.business@gmail.com</a></li>
 		</ul>
@@ -465,7 +465,7 @@ shopify theme push --store your-store.myshopify.com --theme 123456789 --only sec
 			</table>
 		</div>
 		<p><strong>Announcement bar.</strong> Add one or more messages in the <code>announcement-bar</code> section. Each block supports text, a link, an optional dot and an optional phone number. Use the bar for cut-off reminders such as “Order by Friday 11:59 PM for Monday delivery”.</p>
-		<p><strong>Footer.</strong> The theme ships <code>cm-footer</code> (Chef Matt footer) with a call-to-action band, brand column, link columns, contact block and newsletter form. The standard Shopify <code>footer</code> section is also available if you prefer the classic layout.</p>
+		<p><strong>Footer.</strong> The theme ships <code>cm-footer</code> (Chef Matt footer) with a brand column, newsletter form, and blocks for the call-to-action band (<strong>Call to action</strong>), link columns (<strong>Custom links</strong> / <strong>Menu</strong>), and contact. Manage the orange CTA banner as its own block in the left sidebar — same pattern as Custom links — not as section settings. The standard Shopify <code>footer</code> section is also available if you prefer the classic layout.</p>
 	</section>
 
 	<section id="location">
@@ -804,7 +804,7 @@ announcement-bar → delivery message, if one mentions a city
 					<tr><td><code>cm-contact-page</code></td><td>CM contact page</td><td>Contact page with details panel and contact form. Section: Page heading/Lead/Panel heading/Panel note/Ticket heading/Ticket note typography + spacing + text background (color / image / mask). Contact detail blocks: Label + Value typography + spacing + text background. Defaults unchanged until set.</td><td>contact_item</td></tr>
 					<tr><td><code>cm-contact-form</code></td><td>CM contact form</td><td>Configurable contact form with custom fields. Text roles: typography + spacing + text background (color / image / mask).</td><td>field, group_heading</td></tr>
 					<tr><td><code>cm-contact-cta</code></td><td>CM contact CTA</td><td>Closing call to action band. Section: Label/Heading/Text typography + spacing + text background (color / image / mask). Defaults unchanged until set.</td><td>—</td></tr>
-					<tr><td><code>cm-footer</code></td><td>Chef Matt footer</td><td>Footer with CTA band, link columns, contact and newsletter. Section: CTA eyebrow/heading/text/promises, about, newsletter, copyright typography + spacing + text background (color / image / mask). Column blocks: Heading + link/contact text typography + spacing + text background. Defaults unchanged until set.</td><td>links, menu, contact</td></tr>
+					<tr><td><code>cm-footer</code></td><td>Chef Matt footer</td><td>Footer with CTA band, link columns, contact and newsletter. <strong>Call to action</strong> is its own block (limit 1) — eyebrow/heading/text/promises/buttons + typography + spacing + text background — not section settings. Section: about, newsletter, copyright typography + spacing + text background. Column blocks: Heading + link/contact text typography + spacing + text background. Defaults unchanged until set.</td><td>cta, links, menu, contact</td></tr>
 					<tr><td><code>meal-plans</code></td><td>Meal plans</td><td>Plan card grid, Metaobject or blocks</td><td>plan</td></tr>
 					<tr><td><code>faq</code></td><td>FAQ</td><td>Accordion FAQ, Metaobject or blocks</td><td>faq</td></tr>
 					<tr><td><code>testimonials</code></td><td>Testimonials</td><td>Review grid with star ratings, Metaobject or blocks</td><td>testimonial</td></tr>
@@ -1887,6 +1887,25 @@ Field block:
 					</tr>
 				</thead>
 				<tbody>
+					<tr>
+						<td><strong>1.4.8</strong></td>
+						<td>November 10, 2026</td>
+						<td>
+							<ul>
+								<li><strong>Button hover colors:</strong> Every animated prep button (<code>pm-button</code>) now has <strong>Hover text color</strong> and <strong>Hover background color</strong> in its Button style settings. Clear a swatch to keep the style preset hover.</li>
+								<li>Theme settings → <strong>Buttons</strong> adds theme-wide defaults for prep buttons and standard Shopify <code>.button</code> hover text/background. Section/block values override the theme defaults.</li>
+							</ul>
+						</td>
+					</tr>
+					<tr>
+						<td><strong>1.4.7</strong></td>
+						<td>November 10, 2026</td>
+						<td>
+							<ul>
+								<li><strong>Chef Matt footer CTA as block:</strong> The orange call-to-action band is now a <strong>Call to action</strong> block (limit 1) under <code>cm-footer</code>, managed like Custom links in the left sidebar. Section-level CTA settings removed. Content, button, phone, and typography/background controls live on the block.</li>
+							</ul>
+						</td>
+					</tr>
 					<tr>
 						<td><strong>1.4.6</strong></td>
 						<td>November 9, 2026</td>

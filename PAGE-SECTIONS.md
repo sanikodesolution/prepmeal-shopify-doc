@@ -91,6 +91,16 @@ Clear a color swatch to reset that color. Leave image/mask empty when unused.
 
 Applies across CM sections, gift card, private chef, `cm-mp-*` meal-plan stack, SS Feature #1, Image banner, Image with text, rich text, newsletter, and related blocks. See **Sections Reference** in `index.html`.
 
+### Footer (`cm-footer`)
+
+| Block | Job |
+| --- | --- |
+| `cta` | Orange call-to-action band (limit 1) — content + button + typography |
+| `links` / `menu` | Link columns |
+| `contact` | Phone / email / area / hours |
+
+CTA content is **not** section settings; use Add block → Call to action.
+
 ## Workflow
 
 1. Prefer **Add section** over stuffing unrelated blocks into another section.
