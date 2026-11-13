@@ -75,7 +75,7 @@ its own section in Customize.
 |---|---|
 | One menu list | Meal **variants** on the plan product feed both the numbered list and the order dropdowns |
 | Meal slots | Product metafield `custom.meal_slots` (e.g. `6`) controls how many MEAL dropdowns appear |
-| App options override | Theme Meal 1…N always render by default. When an options app (King Product, …) option set is **Active**, it injects into the order form and theme JS hides the Meal dropdowns. **Draft** / unpublished app sets inject nothing → theme list stays visible. No `app-options` tag required. |
+| App options override | Theme Meal 1…N is default. King/YMQ **Draft still injects** on storefront, so theme suppresses app UI unless the plan product is tagged `app-options` / `king-options` (or metafield `custom.use_app_options`). Then Active King shows and theme Meal fields hide. |
 | Plan total | Sum of the selected meal line prices (not base × slot count). With King Product, the header shows the plan line price (King handles add-ons) |
 | Surcharge label | Meals priced above the plan base show a `+$X` style surcharge in the picker |
 | Deselect | Choosing the placeholder again clears that slot |
@@ -182,20 +182,25 @@ title (`6 Meal Plan` → 6).
 ### 3.1b Hand the order box to a product-options app
 
 Use this when merchants want weekly meal dropdowns from **any** options app
-(King Product, Infinite Options, Bold, Globo, …) instead of theme Meal slots.
+(King Product / YMQ, Infinite Options, Bold, Globo, …) instead of theme Meal slots.
+
+**Important:** King Product **Draft still injects** on the live product page.
+Theme Meal 1…N is therefore the default, and the theme suppresses King UI
+unless you opt in.
 
 1. Install the app → create options for the plan product → Save.
-2. Enable the app embed / app block so options show on the product page.
-3. Set the app option set to **Active** when you want the app UI live.
-   Leave it **Draft** to keep the theme Meal 1…N list on the meal page.
+2. Enable the app embed / app block.
+3. Set the option set to **Active**.
+4. Products → plan product → add tag **`app-options`** (legacy **`king-options`**
+   still works) or metafield `custom.use_app_options` = true → Save.
 
 Storefront behaviour:
 
-- **Draft** (or no app options): theme Meal dropdowns show automatically.
-- **Active**: app injects into the order form; theme JS hides Meal 1…N so
-  customers do not see two stacks.
+- **No tag** (King Draft or Active): theme Meal dropdowns show; King UI hidden.
+- **Tag + Active King**: King shows; theme Meal fields hide.
 
-No product tag (`app-options` / `king-options`) is required for this fallback.
+To go back to theme after testing King: remove the `app-options` tag (and/or
+set King to Draft).
 
 ### 3.2 One variant per meal (the weekly menu list)
 
