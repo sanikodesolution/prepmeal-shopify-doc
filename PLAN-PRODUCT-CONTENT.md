@@ -75,7 +75,7 @@ its own section in Customize.
 |---|---|
 | One menu list | Meal **variants** on the plan product feed both the numbered list and the order dropdowns |
 | Meal slots | Product metafield `custom.meal_slots` (e.g. `6`) controls how many MEAL dropdowns appear |
-| King Product override | Tag the plan product `king-options` (or metafield `custom.use_king_options`) **after** assigning a King Product option set → theme Meal 1…N dropdowns hide; King injects into the order panel |
+| App options override | On **product** templates only: tag the plan product `app-options` (legacy `king-options` still works) or metafield `custom.use_app_options` **after** assigning any product-options app → theme Meal 1…N dropdowns hide; the app injects into the order panel. `/pages/*` meal plans keep theme dropdowns (most apps do not inject there). |
 | Plan total | Sum of the selected meal line prices (not base × slot count). With King Product, the header shows the plan line price (King handles add-ons) |
 | Surcharge label | Meals priced above the plan base show a `+$X` style surcharge in the picker |
 | Deselect | Choosing the placeholder again clears that slot |
@@ -179,22 +179,25 @@ variant. Merchants set it on the plan product so they never need the theme edito
 Priority if Meal slots is blank: theme “Order dropdowns” → number in the product
 title (`6 Meal Plan` → 6).
 
-### 3.1b Hand the order box to King Product Options
+### 3.1b Hand the order box to a product-options app
 
-Use this when merchants want to edit weekly meal dropdowns in **King Product
-Options** instead of theme Meal slots.
+Use this when merchants want weekly meal dropdowns from **any** options app
+(King Product, Infinite Options, Bold, Globo, …) instead of theme Meal slots.
 
-1. Apps → **King Product Options** → create an option set (e.g. Meal 1…Meal 6
-   dropdowns) → assign it to the plan product → Save.
-2. Confirm the King Product **app embed** is Activated (theme editor → App embeds).
-3. Products → plan product → add tag **`king-options`** (or metafield
-   `custom.use_king_options` = true) → Save.
+1. Install the app → create options for the plan product → Save.
+2. Enable the app embed / app block so options show on the product page.
+3. Products → plan product → add tag **`app-options`** (legacy **`king-options`**
+   still works) or metafield `custom.use_app_options` = true → Save.
 
-Storefront result: theme Meal 1…N selects turn off; the order panel keeps a
-cart form shell so King can inject. Remove the tag to restore theme dropdowns.
+Storefront result on **`/products/…`**: theme Meal 1…N selects turn off; the
+order panel keeps a cart form shell so the app can inject. Theme JS also
+auto-hides theme dropdowns if it detects injected app options.
 
-Do **not** add the tag before the option set is assigned — the order panel
-would show with no meal pickers.
+`/pages/…-meal-plan` keeps the theme dropdowns (most apps do not inject on
+pages). Remove the tag to restore theme dropdowns on the product page.
+
+Do **not** add the tag before the app options are assigned — the product order
+panel would show with no meal pickers.
 
 ### 3.2 One variant per meal (the weekly menu list)
 
@@ -688,7 +691,7 @@ than the one the order box charges.
 - [ ] Customize: clicking a hero CTA opens that **Hero button** (label + link)
 - [ ] `show_quality_band` is off unless the Premium ingredients band is wanted
 - [ ] Every plan product has one variant per meal, each with price and photo
-- [ ] `custom.meal_slots` matches the plan size (6 on 6 Meal Plan, etc.) — or tag `king-options` if King Product owns the order box
+- [ ] `custom.meal_slots` matches the plan size (6 on 6 Meal Plan, etc.) — or tag `app-options` if a product-options app owns the product order box
 - [ ] Every meal variant has calories, protein, carbs, fat
 - [ ] Diet tags are correct, so the filter chips match the food
 - [ ] Allergens are accurate
