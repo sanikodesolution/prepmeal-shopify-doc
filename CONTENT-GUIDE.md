@@ -6,6 +6,21 @@
 
 ---
 
+## ০. Blank Builder পেজ (খালি ক্যানভাস)
+
+নিজের মতো পেজ বানাতে:
+
+1. Admin → **Pages → Add page** → Theme template **blank-builder** বেছে নিন।
+2. **Customize** → **Add section** → **Builder Section**।
+3. সেকশনের ভিতরে **Add block**:
+   - **Layout:** Group, Columns, Container (একে অপরের ভিতরেও বসানো যায়)
+   - **Content (এখন):** Heading, Text, Image, Button, Spacer
+4. আরও Builder Section যোগ করে পুরো পেজ শেষ করুন।
+
+বিস্তারিত: `PAGE-SECTIONS.md` → Blank Builder।
+
+---
+
 ## ১. কাজের নিয়ম (একবার পড়ুন)
 
 থিমে প্রতিটি সেকশন **দুইভাবে** কনটেন্ট নেয়:

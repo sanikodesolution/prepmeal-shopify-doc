@@ -61,10 +61,36 @@ Shipped templates use **separate** `cm-mp-*` sections (not one mega `cm-meal-pla
 | `page.custom-meal-plans` | main → intro → form |
 | `page.faqs` | main + multiple collapsible content sections |
 
+## Blank Builder — `page.blank-builder.json`
+
+Elementor-style blank page (header/footer only + one empty **Builder Section** so Shopify accepts the template). Merchants add blocks/sections in Customize.
+
+| Step | Action |
+| --- | --- |
+| 1 | Admin → Pages → Add page → Theme template **blank-builder** (Blank Builder) |
+| 2 | Customize → open the starter **Builder Section**, or **Add section** → **Builder Section** |
+| 3 | Inside that section → **Add block**: layout + content theme blocks |
+| 4 | Add more Builder Sections as needed |
+
+### Layout theme blocks (Batch C — shipped)
+
+| Block file | Editor name | Job |
+| --- | --- | --- |
+| `pm-group` | Group | Flex nestable wrapper (direction, gap, width, bg, hide device) |
+| `pm-columns` | Columns | CSS grid; cols desktop/tablet/mobile; stack/reverse on mobile |
+| `pm-container` | Container | Width-controlled centered wrapper |
+
+Nesting: any theme block can sit **in the Builder Section** or **inside Group / Columns / Container**, in any order. Group↔Columns↔Container can nest (keep depth reasonable).
+
+Also available today: `pm-heading`, `pm-text`, `pm-image`, `pm-button`, `pm-spacer` (more content/button-style blocks come in later batches). Leave `ai_gen_*` and `gift-card-visual` out of this workflow.
+
+`_blocks.liquid` (“Theme & app blocks”) is unchanged — use **Builder Section** on Blank Builder pages.
+
 ## Intentionally single-section
 
 | Template | Why |
 | --- | --- |
+| `page.blank-builder` | Starts empty; merchant builds with Builder Section + blocks |
 | `page.gift-card-editor` | One interactive editor UI |
 | `page.json` | Default Shopify page body |
 | System (`404`, `search`, …) | Not marketing pages |
