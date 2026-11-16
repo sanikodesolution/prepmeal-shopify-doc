@@ -57,7 +57,7 @@ Shipped templates use **separate** `cm-mp-*` sections (not one mega `cm-meal-pla
 | --- | --- |
 | `page.about` | story → usp → cta |
 | `page.how-it-works` | hero → steps → good_to_know → cta |
-| `page.contact` | main → contact_page |
+| `page.contact` | main → contact_page (`cm-contact-page` title default **40px**, two-line heading supported via line break) |
 | `page.custom-meal-plans` | main → intro → form |
 | `page.faqs` | main + multiple collapsible content sections |
 
@@ -100,6 +100,43 @@ Also available today: `pm-heading`, `pm-text`, `pm-image`, `pm-button`, `pm-spac
 - Live preview + customization panel (card size, colors, tilt, logo, PNG/SVG export)
 - Typography: font family / weight / per-line sizes (minimum **14px**)
 - Do **not** load fonts from a local Downloads folder; use theme fonts or Google fonts via the editor JS
+
+## Section titles (Batch J)
+
+Global look for section title areas (eyebrow + title + subtitle):
+
+| Layer | Where | What |
+| --- | --- | --- |
+| **Theme settings** | Customize → Theme settings → **Section titles** | Font, desktop/mobile size, weight, line height, letter spacing, transform, color; eyebrow + subtitle styles; default alignment; stack gap; space below |
+| **Per section** | Section → **Title area** (max 5) | Alignment, title size (Auto / S / M / L / Custom), title color, space below (0 = theme), Hide title area |
+
+Shared render: `snippets/pm-section-title.liquid` (CSS vars `--pm-title-*` from `layout/theme.liquid`). Defaults match the previous look — pages stay unchanged until you edit a setting.
+
+**Adopted so far (Patterns A + B):**
+
+| Pattern | Sections |
+| --- | --- |
+| A — prep `section-heading` | `how-it-works`, `meal-plans`, `delivery-zones`, `testimonials`, `faq`, `prep-meal-details`, `prep-hero` |
+| B — Dawn title | `video`, `collage`, `contact-form` |
+
+CM / meal-plan typed stacks (`cm-label` / `mealplan-h` / heroes) are **not** on this system yet — they keep their own typography controls.
+
+## Extra content area (Batch I — Option B)
+
+Some content sections can unlock a nestable **Extra content area** under the main block:
+
+1. Open the section in the theme editor.
+2. Turn on **Show extra content area** (default **off** — storefront unchanged until enabled).
+3. Add builder blocks inside the static `pm-group` (`pm-extra`): Heading, Text, Image, Buttons, Group, Columns, etc.
+
+| Shipped | Section |
+| --- | --- |
+| I1 pilot | `cm-mp-band` |
+| I2 | `cm-mp-cta`, `cm-contact-cta`, `cm-mp-chef`, `cm-mp-delivery`, `video`, `featured-blog`, `page`, `custom-liquid` |
+
+Styles: `snippets/pm-extension-slot.liquid`. Schema is `blocks: [{ "type": "pm-group" }]` only (no mix with local blocks).
+
+**Not eligible without migration:** sections that already define local/theme-mixed blocks, header/footer groups, product/cart chrome.
 
 ## Text typography & background (theme-wide)
 

@@ -36,6 +36,8 @@
 				<li><a href="#installation" title="Installation">Installation</a></li>
 				<li><a href="#theme_structure" title="Theme Structure">Theme Structure</a></li>
 				<li><a href="#theme_settings" title="Theme Settings">Theme Settings</a></li>
+				<li><a href="#section_titles" title="Section titles">Section Titles</a></li>
+				<li><a href="#extra_content" title="Extra content area">Extra Content Area</a></li>
 				<li><a href="#fonts_used" title="Fonts used">Fonts Used</a></li>
 				<li><a href="#theme_colors" title="Theme Colors">Theme Colors</a></li>
 				<li><a href="#header_nav" title="Header &amp; Navigation">Header &amp; Navigation</a></li>
@@ -311,6 +313,7 @@ shopify theme push --store your-store.myshopify.com --theme 123456789 --only sec
 					<tr><td><strong>Badges</strong></td><td>Badge position and radius, sale and sold-out color schemes.</td></tr>
 					<tr><td><strong>Brand information</strong></td><td>Brand headline, description, social links.</td></tr>
 					<tr><td><strong>Search / Currency / Cart</strong></td><td>Predictive search, currency code display, cart type (drawer or notification), cart color scheme.</td></tr>
+					<tr><td><strong>Section titles</strong></td><td>Global eyebrow / title / subtitle look (font, sizes, colors, alignment, spacing). Outputs <code>--pm-title-*</code> CSS variables. See <a href="#section_titles">Section Titles</a>.</td></tr>
 				</tbody>
 			</table>
 		</div>
@@ -1599,6 +1602,44 @@ Or, with no numbers at all:
 		<p>Full page map: <a href="#page_sections">Page Sections Map</a> and <code>PAGE-SECTIONS.md</code>.</p>
 	</section>
 
+	<section id="section_titles">
+		<div class="page-header">
+			<h3>Section Titles</h3>
+		</div>
+		<p>Section title areas (eyebrow + main title + subtitle) share one system so merchants can restyle them globally or override a few options per section.</p>
+		<h5>Theme settings → Section titles</h5>
+		<p>Controls the default look for adopted sections: title font, desktop/mobile size, weight, line height, letter spacing, text transform, color; eyebrow and subtitle styles; default alignment; space between lines; space below the title block. Values are written as <code>--pm-title-*</code> CSS variables in <code>layout/theme.liquid</code>. Defaults match the previous theme look, so nothing changes until you edit them.</p>
+		<h5>Per-section Title area (max 5 settings)</h5>
+		<div class="table-responsive">
+			<table class="table table-bordered table-striped" style="font-size:13px;">
+				<thead><tr><th>Setting</th><th>Notes</th></tr></thead>
+				<tbody>
+					<tr><td>Alignment</td><td>Theme default / left / center / right</td></tr>
+					<tr><td>Title size</td><td>Auto (theme) / small / medium / large / custom</td></tr>
+					<tr><td>Title color</td><td>Empty = theme default</td></tr>
+					<tr><td>Space below</td><td><code>0</code> = theme default</td></tr>
+					<tr><td>Hide title area</td><td>Removes eyebrow + title + subtitle from the storefront</td></tr>
+				</tbody>
+			</table>
+		</div>
+		<p>Shared snippet: <code>snippets/pm-section-title.liquid</code>.</p>
+		<p><strong>Adopted:</strong> prep sections that used <code>section-heading</code> (<code>how-it-works</code>, <code>meal-plans</code>, <code>delivery-zones</code>, <code>testimonials</code>, <code>faq</code>, <code>prep-meal-details</code>, <code>prep-hero</code>) and Dawn title sections <code>video</code>, <code>collage</code>, <code>contact-form</code>. CM / <code>cm-mp-*</code> typed stacks and heroes still use their own typography for now.</p>
+	</section>
+
+	<section id="extra_content">
+		<div class="page-header">
+			<h3>Extra Content Area</h3>
+		</div>
+		<p>Selected content sections can open a nestable builder slot under their main content without changing the live page until you turn it on.</p>
+		<ol>
+			<li>Select the section in the theme editor.</li>
+			<li>Enable <strong>Show extra content area</strong> (default off).</li>
+			<li>Add blocks inside the static <code>pm-group</code> (<code>pm-extra</code>): Heading, Text, Image, Buttons, Group, Columns, Container, and other builder blocks.</li>
+		</ol>
+		<p><strong>Shipped:</strong> <code>cm-mp-band</code> (pilot), then <code>cm-mp-cta</code>, <code>cm-contact-cta</code>, <code>cm-mp-chef</code>, <code>cm-mp-delivery</code>, <code>video</code>, <code>featured-blog</code>, <code>page</code>, <code>custom-liquid</code>.</p>
+		<p>Styles come from <code>snippets/pm-extension-slot.liquid</code>. Sections that already use local blocks cannot mix this pattern until they are migrated.</p>
+	</section>
+
 	<section id="page_sections">
 		<div class="page-header">
 			<h3>Page Sections Map</h3>
@@ -1609,8 +1650,9 @@ Or, with no numbers at all:
 			<li><strong>Private chef</strong> — hero → occasions → expect → steps → quote form</li>
 			<li><strong>Meal plan pages</strong> — split <code>cm-mp-*</code> stack (order through CTA)</li>
 			<li><strong>Gift card editor</strong> — intentionally one section (single interactive UI)</li>
+			<li><strong>Blank Builder</strong> — empty canvas + Builder Section / theme blocks (see <code>PAGE-SECTIONS.md</code>)</li>
 		</ul>
-		<p>Markdown source of truth in this doc repo: <code>PAGE-SECTIONS.md</code>. Update that file whenever page structure changes.</p>
+		<p>Also documented in <code>PAGE-SECTIONS.md</code>: <a href="#section_titles">Section Titles</a> and <a href="#extra_content">Extra Content Area</a>. Update that file whenever page structure changes.</p>
 	</section>
 
 	<section id="forms">
@@ -1620,7 +1662,7 @@ Or, with no numbers at all:
 		<p>All forms use native Shopify forms, so submissions appear in <strong>Customers</strong> (newsletter) or are emailed to the store address (contact). No third-party service is required.</p>
 		<h5>Contact forms</h5>
 		<ul>
-			<li><strong><code>cm-contact-page</code></strong> — the full contact page: details panel, ticket-style form and privacy note.</li>
+			<li><strong><code>cm-contact-page</code></strong> — the full contact page: details panel, ticket-style form and privacy note. Page heading (<code>cmc__title</code>) defaults to <strong>40px</strong>; use a line break in the Heading setting to keep it on two lines.</li>
 			<li><strong><code>cm-contact-form</code></strong> — a reusable form you can drop on any page, with configurable field blocks.</li>
 			<li><strong><code>cm-private-chef-quote</code></strong> — enquiry form with field blocks (hero / occasions / expect / steps are separate sections).</li>
 			<li><strong><code>contact-form</code></strong> — the standard Shopify contact section.</li>
@@ -1888,6 +1930,18 @@ Field block:
 					</tr>
 				</thead>
 				<tbody>
+					<tr>
+						<td><strong>1.4.11</strong></td>
+						<td>November 16, 2026</td>
+						<td>
+							<ul>
+								<li><strong>Section titles:</strong> Theme settings → <strong>Section titles</strong> plus per-section Title area overrides. Shared <code>pm-section-title</code> on prep sections and Dawn <code>video</code> / <code>collage</code> / <code>contact-form</code>.</li>
+								<li><strong>Extra content area:</strong> Optional <code>pm-group</code> slot (default off) on <code>cm-mp-band</code> and eight more simple content sections.</li>
+								<li><strong>Blank Builder</strong> layout blocks and starter presets documented; Heading block size Auto (0).</li>
+								<li><strong>CM contact page</strong> title: 40px with two-line support.</li>
+							</ul>
+						</td>
+					</tr>
 					<tr>
 						<td><strong>1.4.10</strong></td>
 						<td>November 10, 2026</td>
