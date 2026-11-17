@@ -154,6 +154,17 @@ Clear a color swatch to reset that color. Leave image/mask empty when unused.
 
 Applies across CM sections, gift card, private chef, `cm-mp-*` meal-plan stack, SS Feature #1, Image banner, Image with text, rich text, newsletter, and related blocks. See **Sections Reference** in `index.html`.
 
+### SS Feature #2–#5
+
+| Section | Layout |
+|---|---|
+| `ss-feature-2` | Soft cards with round icon plate |
+| `ss-feature-3` | Hairline two-column list (icon left) |
+| `ss-feature-4` | Numbered steps with dashed connectors |
+| `ss-feature-5` | Bento tiles (max 4) |
+
+Shared assets: `assets/pm-feature.css`, `snippets/pm-feature-media.liquid` (keeps GIF animation).
+
 ### Footer (`cm-footer`)
 
 | Block | Job |
